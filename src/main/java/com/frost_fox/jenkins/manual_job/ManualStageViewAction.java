@@ -1,4 +1,4 @@
-package io.jenkins.plugins.sample;
+package com.frost_fox.jenkins.manual_job;
 
 import hudson.model.Action;
 

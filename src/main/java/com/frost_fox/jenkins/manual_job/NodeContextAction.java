@@ -1,9 +1,8 @@
-package io.jenkins.plugins.sample;
+package com.frost_fox.jenkins.manual_job;
 
 import hudson.model.Action;
 
 import javax.annotation.CheckForNull;
-import java.awt.*;
 
 public class NodeContextAction implements Action {
 
