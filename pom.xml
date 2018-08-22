@@ -7,8 +7,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -21,12 +21,12 @@
     </parent>
     <groupId>com.frost_fox.jenkins</groupId>
     <artifactId>manual-job</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-ALFA1</version>
     <packaging>hpi</packaging>
 
     <properties>
         <jenkins.version>1.642.3</jenkins.version>
-        <java.level>8</java.level>
+        <java.level>7</java.level>
         <workflow.version>2.0</workflow.version>
     </properties>
 
