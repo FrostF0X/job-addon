@@ -2,8 +2,8 @@ package com.frost_fox.jenkins.manual_job;
 
 import hudson.Extension;
 import hudson.model.Job;
+import hudson.model.Run;
 import org.jenkinsci.Symbol;
-import org.jenkinsci.plugins.workflow.graph.FlowNode;
 import org.jenkinsci.plugins.workflow.steps.Step;
 import org.jenkinsci.plugins.workflow.steps.StepContext;
 import org.jenkinsci.plugins.workflow.steps.StepDescriptor;
@@ -18,26 +18,26 @@ import java.util.Set;
 public class ManualJobStep extends Step implements Serializable {
 
     private static final long serialVersionUID = 1;
-    private final transient ManualJobContext targetJobContext;
+    private final transient OnDemandJobContext targetJobContext;
 
     @DataBoundConstructor
     public ManualJobStep(String name, String id) {
         Parameters parameters = new Parameters(name, id);
-        targetJobContext = new ManualJobContext(parameters.getName(), createExecuteUrl(parameters.getJob()));
+        targetJobContext = new OnDemandJobContext(parameters.getName(), createExecuteUrl(parameters.getJob()));
     }
 
     private String createExecuteUrl(Job job) {
-        return job.getUrl() + "/build";
+        return job.getUrl();
     }
 
     @Override
     public StepExecution start(StepContext stepContext) throws Exception {
-        FlowNode node = Objects.requireNonNull(stepContext.get(FlowNode.class));
-        node.addAction(new NodeContextAction(targetJobContext));
+        Run run = Objects.requireNonNull(stepContext.get(Run.class));
+        run.addAction(new RunContextAction(targetJobContext));
         return new EmptyStepExecutor(stepContext);
     }
 
-    @Symbol("manualJob")
+    @Symbol("onDemandJob")
     @Extension
     public static final class Descriptor extends StepDescriptor {
         @Override
@@ -46,11 +46,11 @@ public class ManualJobStep extends Step implements Serializable {
         }
 
         public String getFunctionName() {
-            return "manualJob";
+            return "onDemandJob";
         }
 
         public String getDisplayName() {
-            return "Manual Job";
+            return "On Demand Job";
         }
 
     }

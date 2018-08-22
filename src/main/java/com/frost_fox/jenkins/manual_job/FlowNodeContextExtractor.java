@@ -9,17 +9,17 @@ public class FlowNodeContextExtractor {
 
     public static Context extract(FlowNode node) {
         List<Action> actions = node.getActions();
-        NodeContextAction contextAction = getContextAction(actions);
+        RunContextAction contextAction = getContextAction(actions);
         return contextAction.getContext();
     }
 
-    private static NodeContextAction getContextAction(List<Action> actions) {
+    private static RunContextAction getContextAction(List<Action> actions) {
         for (Action action : actions) {
-            if (action instanceof NodeContextAction) {
-                return (NodeContextAction) action;
+            if (action instanceof RunContextAction) {
+                return (RunContextAction) action;
             }
         }
-        return NodeContextAction.empty();
+        return RunContextAction.empty();
     }
 
 }
