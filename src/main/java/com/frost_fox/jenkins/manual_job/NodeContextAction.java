@@ -6,6 +6,10 @@ import javax.annotation.CheckForNull;
 
 public class NodeContextAction implements Action {
 
+    public static NodeContextAction empty() {
+        return new NodeContextAction(new EmptyContext());
+    }
+
     private final Context context;
 
     public NodeContextAction(Context context) {
