@@ -17,9 +17,9 @@ public class Parameters {
     }
 
     private Job getJob(String jobId) {
-        Jenkins jenkins = Jenkins.getInstanceOrNull();
+        Jenkins jenkins = Jenkins.getInstance();
         if (jenkins == null) {
-            throw new RuntimeException("jenkins not found o_O (Jenkins.getInstanceOrNull() returned null)");
+            throw new RuntimeException("jenkins not found o_O (Jenkins.getInstance() returned null)");
         }
         Item item = jenkins.getItem(jobId);
         if (item == null || !(item instanceof Job)) {
