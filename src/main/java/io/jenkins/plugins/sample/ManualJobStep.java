@@ -17,7 +17,8 @@ import java.util.Set;
 
 public class ManualJobStep extends Step implements Serializable {
 
-    private final ManualJobContext targetJobContext;
+    private static final long serialVersionUID = 1;
+    private final transient ManualJobContext targetJobContext;
 
     @DataBoundConstructor
     public ManualJobStep(String name, String id) {
