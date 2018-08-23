@@ -5,7 +5,7 @@
     <groupId>com.frost_fox.jenkins</groupId>
     <artifactId>on-demand-job</artifactId>
     <version>1.0-ALFA1</version>
-    <packaging>hpi</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <jenkins.version>1.642.3</jenkins.version>
@@ -13,9 +13,9 @@
         <workflow.version>2.0</workflow.version>
     </properties>
 
-    <name>TODO Plugin</name>
-    <description>TODO</description>
-    <!-- The default licence for Jenkins OSS Plugins is MIT. Substitute for the applicable one if needed. -->
+    <name>On Demand Job</name>
+    <description>Add ability to run other jobs on demand after build is finished</description>
+
     <licenses>
         <license>
             <name>MIT License</name>
@@ -25,6 +25,7 @@
 
     <modules>
         <module>on-demand-job-api</module>
+        <module>on-demand-job-grid</module>
     </modules>
 
 </project>
