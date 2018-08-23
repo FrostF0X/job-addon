@@ -11,13 +11,12 @@ import org.jenkinsci.plugins.workflow.graph.FlowNode;
 
 import javax.annotation.CheckForNull;
 import javax.annotation.Nonnull;
-import java.io.IOException;
 import java.util.List;
 
 public class TestFlowExecution extends FlowExecution {
 
     @Override
-    public void start() throws IOException {
+    public void start() {
 
     }
 
@@ -55,6 +54,7 @@ public class TestFlowExecution extends FlowExecution {
     @Nonnull
     @Override
     public Authentication getAuthentication() {
+        //noinspection ConstantConditions
         return null;
     }
 

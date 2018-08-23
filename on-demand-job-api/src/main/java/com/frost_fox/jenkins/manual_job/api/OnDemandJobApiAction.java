@@ -37,4 +37,5 @@ public class OnDemandJobApiAction implements UnprotectedRootAction {
     public HttpResponse doIndex() {
         return HttpResponses.plainText(job.getName());
     }
+
 }
