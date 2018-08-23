@@ -5,5 +5,7 @@
     It loads jobMain.jelly for all Action impls bound to a WorkflowJob.
 -->
 <j:jelly xmlns:j="jelly:core" xmlns:wf="/com/cloudbees/workflow">
-    <script src="${rootURL}/plugin/on-demand-job-grid/test.js"/>
+    <div id="on-demand-job-grid-root"></div>
+    <script src="${rootURL}/plugin/on-demand-job-grid/js/main.js"/>
+    <link rel="stylesheet" href="${rootURL}/plugin/on-demand-job-grid/css/main.css" type="text/css" />
 </j:jelly>
