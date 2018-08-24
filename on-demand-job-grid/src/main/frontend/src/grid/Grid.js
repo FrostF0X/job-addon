@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SpecificationView from "./SpecificationView";
 import ExecutionsView from "./ExecutionsView";
+import "./Grid.css";
 
 export default class Grid extends Component {
 

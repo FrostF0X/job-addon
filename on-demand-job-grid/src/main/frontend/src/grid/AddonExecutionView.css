@@ -1,0 +1,24 @@
+.job-grid-addon-execution {
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    text-shadow: #fff 0 1px 1px, #fff 0 1px 2px;
+    padding: 0;
+    height: 6em;
+}
+
+.job-grid-addon-execution-cell {
+    background: rgba(0, 255, 0, 0.1);
+    min-height: 5.8em;
+    position: relative;
+    height: 45px;
+    border: solid 1px #f0f0f0;
+}
+
+.job-grid-addon-execution:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.03);
+}
+
+.job-grid-addon-execution-content {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    height: 100%;
+}

@@ -17,7 +17,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: com.frost_fox.jenkins:on-demand-job-api:1.0-ALFA1" level="project" />
     <orderEntry type="module" module-name="on-demand-job-api" />
     <orderEntry type="library" name="Maven: org.jenkins-ci.plugins.workflow:workflow-aggregator:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.jenkins-ci.plugins.workflow:workflow-step-api:2.7" level="project" />
