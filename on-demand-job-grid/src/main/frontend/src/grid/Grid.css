@@ -1,7 +1,6 @@
 .job-grid-table {
     border-spacing: 0;
     border: 1px solid #ccc;
-    font-size: 15px;
 
     overflow-x: auto;
     overflow-y: hidden;
