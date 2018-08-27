@@ -4,7 +4,7 @@
         stage('Build'){
             print 'test'
         }
-        onDemandJob(name:'Deploy staging', id:'deploy')
+        jobAddon(name:'Deploy staging', id:'deploy')
     }
 ```
 

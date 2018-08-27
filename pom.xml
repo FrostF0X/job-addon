@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.frost_fox.jenkins</groupId>
-    <artifactId>on-demand-job</artifactId>
+    <artifactId>job-addon</artifactId>
     <version>1.0-ALFA1</version>
     <packaging>pom</packaging>
 
@@ -13,8 +13,8 @@
         <workflow.version>2.0</workflow.version>
     </properties>
 
-    <name>On Demand Job</name>
-    <description>Add ability to run other jobs on demand after build is finished</description>
+    <name>Job Addon</name>
+    <description>Add ability to run other jobs as addons on demand after build is finished</description>
 
     <licenses>
         <license>
@@ -24,8 +24,8 @@
     </licenses>
 
     <modules>
-        <module>on-demand-job-api</module>
-        <module>on-demand-job-grid</module>
+        <module>job-addon-api</module>
+        <module>job-addon-grid</module>
     </modules>
 
 </project>

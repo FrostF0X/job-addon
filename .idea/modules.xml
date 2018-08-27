@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hello-world.iml" filepath="$PROJECT_DIR$/hello-world.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job-addon-api/job-addon-api.iml" filepath="$PROJECT_DIR$/job-addon-api/job-addon-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/job-addon-grid/job-addon-grid.iml" filepath="$PROJECT_DIR$/job-addon-grid/job-addon-grid.iml" />
       <module fileurl="file://$PROJECT_DIR$/on-demand-job.iml" filepath="$PROJECT_DIR$/on-demand-job.iml" />
-      <module fileurl="file://$PROJECT_DIR$/on-demand-job-api/on-demand-job-api.iml" filepath="$PROJECT_DIR$/on-demand-job-api/on-demand-job-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/on-demand-job-grid/on-demand-job-grid.iml" filepath="$PROJECT_DIR$/on-demand-job-grid/on-demand-job-grid.iml" />
     </modules>
   </component>
 </project>
