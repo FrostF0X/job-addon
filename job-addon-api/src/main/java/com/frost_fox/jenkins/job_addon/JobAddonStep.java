@@ -33,7 +33,7 @@ public class JobAddonStep extends Step implements Serializable {
     @Override
     public StepExecution start(StepContext stepContext) throws Exception {
         Run run = Objects.requireNonNull(stepContext.get(Run.class));
-        run.addAction(new RunContextAction(targetJobContext));
+        run.addAction(new AddonContextAction(targetJobContext));
         return new EmptyStepExecutor(stepContext);
     }
 

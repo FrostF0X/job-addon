@@ -1,6 +1,6 @@
 package com.frost_fox.jenkins.job_addon;
 
-public class JobAddonContext implements Context {
+public class JobAddonContext {
     private final String executeUrl;
     private final String name;
 
