@@ -1,9 +1,6 @@
-package com.frost_fox.jenkins.manual_job;
+package com.frost_fox.jenkins.job_addon;
 
-import jenkins.model.Jenkins;
-import org.jenkinsci.plugins.workflow.graph.FlowNode;
 import org.jenkinsci.plugins.workflow.steps.StepContext;
-import org.jenkinsci.plugins.workflow.steps.StepExecution;
 import org.jenkinsci.plugins.workflow.steps.SynchronousStepExecution;
 
 import javax.annotation.Nonnull;

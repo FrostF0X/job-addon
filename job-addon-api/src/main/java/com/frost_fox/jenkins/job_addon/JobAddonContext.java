@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.manual_job;
+package com.frost_fox.jenkins.job_addon;
 
 public class JobAddonContext implements Context {
     private final String executeUrl;

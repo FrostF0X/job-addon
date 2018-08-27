@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.manual_job.jenkins;
+package com.frost_fox.jenkins.job_addon.jenkins;
 
 import hudson.model.Action;
 import hudson.model.Result;

@@ -1,9 +1,6 @@
-package com.frost_fox.jenkins.manual_job;
+package com.frost_fox.jenkins.job_addon;
 
-import hudson.model.Action;
 import hudson.model.InvisibleAction;
-
-import javax.annotation.CheckForNull;
 
 public class RunContextAction extends InvisibleAction {
 

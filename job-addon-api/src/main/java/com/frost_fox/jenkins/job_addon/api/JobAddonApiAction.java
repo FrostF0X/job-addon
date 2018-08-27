@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.manual_job.api;
+package com.frost_fox.jenkins.job_addon.api;
 
 import hudson.Extension;
 import hudson.model.UnprotectedRootAction;

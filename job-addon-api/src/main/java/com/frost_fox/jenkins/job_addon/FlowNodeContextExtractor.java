@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.manual_job;
+package com.frost_fox.jenkins.job_addon;
 
 import hudson.model.Action;
 import org.jenkinsci.plugins.workflow.graph.FlowNode;

@@ -1,6 +1,6 @@
-package com.frost_fox.jenkins.manual_job.jenkins;
+package com.frost_fox.jenkins.job_addon.jenkins;
 
-import com.frost_fox.jenkins.manual_job.Context;
+import com.frost_fox.jenkins.job_addon.Context;
 
 public class SomeContext implements Context {
 

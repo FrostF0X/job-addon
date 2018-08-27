@@ -1,6 +1,6 @@
-package com.frost_fox.jenkins.manual_job;
+package com.frost_fox.jenkins.job_addon;
 
-import com.frost_fox.jenkins.manual_job.jenkins.TestAction;
+import com.frost_fox.jenkins.job_addon.jenkins.TestAction;
 import hudson.model.Action;
 
 import java.util.Arrays;
