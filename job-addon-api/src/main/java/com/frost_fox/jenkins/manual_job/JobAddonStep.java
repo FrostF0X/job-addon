@@ -37,7 +37,7 @@ public class JobAddonStep extends Step implements Serializable {
         return new EmptyStepExecutor(stepContext);
     }
 
-    @Symbol("JobAddon")
+    @Symbol("jobAddon")
     @Extension
     public static final class Descriptor extends StepDescriptor {
         @Override
