@@ -2,6 +2,8 @@ package com.frost_fox.jenkins.job_addon;
 
 import hudson.model.InvisibleAction;
 
+import java.util.Objects;
+
 public class AddonContextAction extends InvisibleAction {
 
     private final JobAddonContext context;
@@ -15,6 +17,11 @@ public class AddonContextAction extends InvisibleAction {
     }
 
     public boolean equals(Object action) {
-        return action instanceof AddonContextAction && ((AddonContextAction) action).getContext().equals(context);
+        return action instanceof AddonContextAction && action.hashCode() == this.hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(context);
     }
 }

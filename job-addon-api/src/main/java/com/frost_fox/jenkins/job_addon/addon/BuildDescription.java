@@ -3,6 +3,7 @@ package com.frost_fox.jenkins.job_addon.addon;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsBuild;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class BuildDescription {
@@ -31,7 +32,11 @@ public class BuildDescription {
 
     @Override
     public boolean equals(Object description) {
-        return description instanceof BuildDescription &&
-                ((BuildDescription) description).getAddons().equals(addons);
+        return description instanceof BuildDescription && description.hashCode() == hashCode();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(addons, id);
     }
 }
