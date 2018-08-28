@@ -9,11 +9,19 @@ public class JobAddonContext {
         this.name = name;
     }
 
-    public String getExecuteUrl() {
+    private String getExecuteUrl() {
         return executeUrl;
     }
 
     public String getName() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof JobAddonContext &&
+                ((JobAddonContext) o).getExecuteUrl().equals(executeUrl) &&
+                ((JobAddonContext) o).getName().equals(name);
+    }
+
 }

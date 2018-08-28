@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('job-addon-grid-root'));
+ReactDOM.render(<App />, document.getElementById('addon-addon-grid-root'));

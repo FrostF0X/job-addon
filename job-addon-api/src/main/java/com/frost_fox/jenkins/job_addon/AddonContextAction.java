@@ -13,4 +13,8 @@ public class AddonContextAction extends InvisibleAction {
     public JobAddonContext getContext() {
         return context;
     }
+
+    public boolean equals(Object action) {
+        return action instanceof AddonContextAction && ((AddonContextAction) action).getContext().equals(context);
+    }
 }

@@ -1,10 +1,11 @@
 package com.frost_fox.jenkins.job_addon.api;
 
+import com.cloudbees.workflow.util.ServeJson;
+import com.frost_fox.jenkins.job_addon.addon.JobDescription;
+import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
 import hudson.Extension;
 import hudson.model.UnprotectedRootAction;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
-import org.kohsuke.stapler.HttpResponse;
-import org.kohsuke.stapler.HttpResponses;
 
 @Extension
 public class JobAddonApiAction implements UnprotectedRootAction {
@@ -34,8 +35,9 @@ public class JobAddonApiAction implements UnprotectedRootAction {
         return "job-addon";
     }
 
-    public HttpResponse doIndex() {
-        return HttpResponses.plainText(job.getName());
+    @ServeJson
+    public Object doIndex() {
+        return JobDescription.from(JenkinsJob.from(job));
     }
 
 }
