@@ -1,0 +1,9 @@
+.job-grid-table {
+    border-spacing: 0;
+    border: 1px solid #ccc;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-shadow: rgba(0, 0, 0, 0.25) 1px 3px 5px;
+    text-align: center;
+}

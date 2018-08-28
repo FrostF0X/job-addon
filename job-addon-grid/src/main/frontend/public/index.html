@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <link rel="stylesheet" href="%PUBLIC_URL%/stage-view.css">
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+    <style>
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<div class="cbwf-stage-view">
+    <div objecturl="/jenkins/job/pipeline/" fragcaption="Stage View" cbwf-controller="pipeline-staged"
+         class="cbwf-widget cbwf-controller-applied pipeline-staged">
+        <div>
+            <div id="pipeline-box">
+                <h2>Stage View</h2>
+                <div class="table-box">
+                    <div class="table-viewPort">
+                        <table class="jobsTable" style="max-width:10em">
+                            <colgroup>
+                                <col class="start-group">
+                                <col class="stage-group" style="max-width:10em;">
+                            </colgroup>
+                            <thead>
+                            <tr class="header">
+                                <th class="stage-start"></th>
+                                <th class="stage-header-name-0">Build</th>
+                            </tr>
+                            </thead>
+                            <tbody class="totals-box">
+                            <tr class="totals">
+                                <td class="stage-start">
+                                    <div class="cell-color">
+                                        Average stage times:<br>
+                                        &nbsp;
+                                    </div>
+                                </td>
+                                <td class="stage-total-0">
+                                    <div class="cell-color">
+                                        <div class="duration">20ms</div>
+                                        <div class="stackedBarChart">
+                                            <div class="stackedBarChart inner clearfix">
+                                                <div class="bar highlight" style="width: 100%;"></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                            <tbody class="tobsTable-body">
+                            <tr class="job SUCCESS" data-runid="2">
+                                <td class="stage-start">
+                                    <div class="cell-color">
+                                        <div class="cell-box">
+                                            <div class="jobName"><span class="badge">#2</span></div>
+                                            <div class="stage-start-box">
+                                                <div class="stage-start-time">
+                                                    <div class="date">Aug 25</div>
+                                                    <div class="time">12:26</div>
+                                                </div>
+                                                <div class="changeset-box no-changes">No Changes</div>
+                                                <div class="stage-end-icons extension-dock">
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="stage-cell stage-cell-0 SUCCESS" data-stageid="6">
+                                    <div class="cell-color">
+                                        <div class="stage-wrapper">
+                                            <div class="duration">
+                                                <span style="font-size: 1.5em; opacity: 1;">20ms</span>
+                                            </div>
+                                            <div cbwf-controller="stage-actions-popover"
+                                                 descurl="/jenkins/job/pipeline/2/execution/node/6/wfapi/describe"
+                                                 notif="stage-actions-popover,stage-failed-popover" caption="Success"
+                                                 class="cbwf-widget cbwf-controller-applied stage-actions-popover"></div>
+                                            <div class="extension-dock"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="job SUCCESS" data-runid="1">
+                                <td class="stage-start">
+                                    <div class="cell-color">
+                                        <div class="cell-box">
+                                            <div class="jobName"><span class="badge">#1</span></div>
+                                            <div class="stage-start-box">
+                                                <div class="stage-start-time">
+                                                    <div class="date">Aug 23</div>
+                                                    <div class="time">18:30</div>
+                                                </div>
+                                                <div class="changeset-box no-changes">No Changes</div>
+                                                <div class="stage-end-icons extension-dock">
+                                                </div>
+                                            </div>
+
+                                            <div class="clearfix"></div>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="stage-cell stage-cell-0 SUCCESS" data-stageid="6">
+                                    <div class="cell-color">
+                                        <div class="stage-wrapper">
+                                            <div class="duration">
+                                                <span style="font-size: 1.5em; opacity: 1;">20ms</span>
+                                            </div>
+                                            <div cbwf-controller="stage-actions-popover"
+                                                 descurl="/jenkins/job/pipeline/1/execution/node/6/wfapi/describe"
+                                                 notif="stage-actions-popover,stage-failed-popover" caption="Success"
+                                                 class="cbwf-widget cbwf-controller-applied stage-actions-popover"></div>
+                                            <div class="extension-dock"></div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <link rel="stylesheet" href="/jenkins/adjuncts/e21a01a3/org/jenkinsci/pipeline/stageview_adjunct.css"
+          type="text/css">
+    <script src="/jenkins/adjuncts/e21a01a3/org/jenkinsci/pipeline/stageview_adjunct.js"
+            type="text/javascript"></script>
+</div>
+<div id="job-addon-grid">
+    <div id="job-addon-grid-root"></div>
+</div>
+</body>
+</html>
