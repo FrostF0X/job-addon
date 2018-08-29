@@ -11,7 +11,7 @@ public class JobAddonContext {
         this.name = name;
     }
 
-    private String getExecuteUrl() {
+    public String getExecuteUrl() {
         return executeUrl;
     }
 

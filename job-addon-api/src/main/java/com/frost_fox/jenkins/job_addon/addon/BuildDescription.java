@@ -22,7 +22,7 @@ public class BuildDescription {
         this.id = id;
     }
 
-    private List<Addon> getAddons() {
+    public List<Addon> getAddons() {
         return addons;
     }
 

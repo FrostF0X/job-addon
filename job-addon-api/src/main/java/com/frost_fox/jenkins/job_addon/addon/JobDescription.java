@@ -18,7 +18,7 @@ public class JobDescription {
         this.buildDescriptions = buildDescriptions;
     }
 
-    private List<BuildDescription> getBuildDescriptions() {
+    public List<BuildDescription> getBuildDescriptions() {
         return buildDescriptions;
     }
 

@@ -17,7 +17,7 @@ public class Addon {
         this(addonAction.getContext());
     }
 
-    private JobAddonContext getContext() {
+    public JobAddonContext getContext() {
         return context;
     }
 
