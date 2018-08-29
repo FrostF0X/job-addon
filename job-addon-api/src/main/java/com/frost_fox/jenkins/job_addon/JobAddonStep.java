@@ -23,7 +23,7 @@ public class JobAddonStep extends Step implements Serializable {
     @DataBoundConstructor
     public JobAddonStep(String name, String id) {
         Parameters parameters = new Parameters(name, id);
-        targetJobContext = new AddonContext(parameters.getName(), createExecuteUrl(parameters.getJob()));
+        targetJobContext = new AddonContext(parameters.getJob().getName(), parameters.getName());
     }
 
     private String createExecuteUrl(Job job) {

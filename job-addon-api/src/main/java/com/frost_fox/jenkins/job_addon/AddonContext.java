@@ -3,20 +3,20 @@ package com.frost_fox.jenkins.job_addon;
 import java.util.Objects;
 
 public class AddonContext {
-    private final String executeUrl;
     private final String name;
+    private final String id;
 
-    public AddonContext(String executeUrl, String name) {
-        this.executeUrl = executeUrl;
+    public AddonContext(String id, String name) {
         this.name = name;
-    }
-
-    public String getExecuteUrl() {
-        return executeUrl;
+        this.id = id;
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -26,6 +26,6 @@ public class AddonContext {
 
     @Override
     public int hashCode() {
-        return Objects.hash(executeUrl, name);
+        return Objects.hash(name, id);
     }
 }

@@ -16,7 +16,7 @@ public class Addons {
     }
 
     public static AddonContext context() {
-        return new AddonContext("url", "name");
+        return new AddonContext("id", "name");
     }
 
 }

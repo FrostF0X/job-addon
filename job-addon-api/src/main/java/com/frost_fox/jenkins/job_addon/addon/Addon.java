@@ -8,11 +8,11 @@ import java.util.Objects;
 public class Addon {
 
     private final String name;
-    private final String url;
+    private final String id;
 
     public Addon(AddonContext context) {
         this.name = context.getName();
-        this.url = context.getExecuteUrl();
+        this.id = context.getId();
     }
 
     public Addon(AddonContextAction addonAction) {
@@ -23,8 +23,8 @@ public class Addon {
         return name;
     }
 
-    public String getUrl() {
-        return url;
+    public String getId() {
+        return id;
     }
 
     @Override
@@ -34,6 +34,6 @@ public class Addon {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, url);
+        return Objects.hash(name, id);
     }
 }
