@@ -7,18 +7,24 @@ import java.util.Objects;
 
 public class Addon {
 
-    private JobAddonContext context;
+    private final String name;
+    private final String url;
 
     public Addon(JobAddonContext context) {
-        this.context = context;
+        this.name = context.getName();
+        this.url = context.getExecuteUrl();
     }
 
     public Addon(AddonContextAction addonAction) {
         this(addonAction.getContext());
     }
 
-    public JobAddonContext getContext() {
-        return context;
+    public String getName() {
+        return name;
+    }
+
+    public String getUrl() {
+        return url;
     }
 
     @Override
@@ -28,6 +34,6 @@ public class Addon {
 
     @Override
     public int hashCode() {
-        return Objects.hash(context);
+        return Objects.hash(name, url);
     }
 }
