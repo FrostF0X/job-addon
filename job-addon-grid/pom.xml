@@ -27,6 +27,20 @@
                 <version>1.6.0</version>
                 <executions>
                     <execution>
+                        <id>Install modules</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>yarn</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                            <workingDirectory>${basedir}/src/main/frontend</workingDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
                         <id>Build frontend</id>
                         <phase>compile</phase>
                         <goals>
@@ -60,7 +74,7 @@
 
     <properties>
         <jenkins.version>1.642.3</jenkins.version>
-        <java.level>7</java.level>
+        <java.level>8</java.level>
         <workflow.version>2.0</workflow.version>
     </properties>
 

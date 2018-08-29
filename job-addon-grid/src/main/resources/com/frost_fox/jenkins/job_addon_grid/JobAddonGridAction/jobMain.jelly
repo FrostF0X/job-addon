@@ -5,7 +5,7 @@
     It loads jobMain.jelly for all Action impls bound to a WorkflowJob.
 -->
 <j:jelly xmlns:j="jelly:core" xmlns:wf="/com/cloudbees/workflow">
-    <div id="job-addon-grid">
+    <div id="job-addon-grid" data-url="${it.apiUrl}">
         <div id="job-addon-grid-root"></div>
     </div>
     <script src="${rootURL}/plugin/job-addon-grid/js/main.js"/>
