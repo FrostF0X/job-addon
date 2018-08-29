@@ -17,4 +17,9 @@ public class TestAction implements Action {
     public String getUrlName() {
         return null;
     }
+
+    @Override
+    public boolean equals(Object action) {
+        return action instanceof TestAction;
+    }
 }

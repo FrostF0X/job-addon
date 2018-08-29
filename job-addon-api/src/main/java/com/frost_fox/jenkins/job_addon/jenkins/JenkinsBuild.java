@@ -5,6 +5,7 @@ import hudson.model.Action;
 import hudson.model.Run;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unchecked")
@@ -12,7 +13,7 @@ public class JenkinsBuild {
     private List<Action> actions;
     private String id;
 
-    public JenkinsBuild(Run run){
+    public JenkinsBuild(Run run) {
         this((List<Action>) run.getAllActions(), run.getId());
     }
 
@@ -26,7 +27,29 @@ public class JenkinsBuild {
                 .map(AddonContextAction.class::cast).collect(Collectors.toList());
     }
 
+    @SuppressWarnings("WeakerAccess")
+    public List<Action> getActions() {
+        return actions;
+    }
+
     public String getId() {
         return id;
+    }
+
+    private boolean haveSameAssignedActions(JenkinsBuild build, JenkinsBuild comparable) {
+        return build.getActions().containsAll(comparable.getActions()) &&
+                comparable.getActions().containsAll(build.getActions());
+    }
+
+    @Override
+    public boolean equals(Object build) {
+        return build instanceof JenkinsBuild &&
+                haveSameAssignedActions((JenkinsBuild) build, this) &&
+                ((JenkinsBuild) build).getId().equals(id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(actions, id);
     }
 }

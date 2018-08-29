@@ -25,7 +25,7 @@ public class Builds {
     }
 
 
-    private static List<JenkinsBuild> buildsWithActions(int count, List<Action> actions) {
+    public static List<JenkinsBuild> buildsWithActions(int count, List<Action> actions) {
         List<JenkinsBuild> builds = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             builds.add(create(actions));

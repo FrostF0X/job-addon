@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 @SuppressWarnings("unchecked")
 public class JenkinsJob {
 
+    public static final int MAX_JOBS = 10;
     private List<JenkinsBuild> builds;
 
     public static JenkinsJob from(Job job) {
@@ -16,7 +17,14 @@ public class JenkinsJob {
     }
 
     public JenkinsJob(List<JenkinsBuild> builds) {
-        this.builds = builds;
+        this.builds = getLast(builds);
+    }
+
+    private List<JenkinsBuild> getLast(List<JenkinsBuild> builds) {
+        if (builds.size() > MAX_JOBS) {
+            return builds.subList(0, MAX_JOBS);
+        }
+        return builds;
     }
 
     public List<JenkinsBuild> getBuilds() {
