@@ -10,7 +10,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Extension
-public class JobAddonApiActionFactory extends TransientActionFactory<WorkflowJob> {
+public class JobDescriptionApiActionFactory extends TransientActionFactory<WorkflowJob> {
 
     @Override
     public Class<WorkflowJob> type() {
@@ -20,6 +20,6 @@ public class JobAddonApiActionFactory extends TransientActionFactory<WorkflowJob
     @Nonnull
     @Override
     public Collection<? extends Action> createFor(@Nonnull WorkflowJob workflowJob) {
-        return Collections.singleton(new JobAddonApiAction(workflowJob));
+        return Collections.singleton(new JobDescriptionApiAction(workflowJob));
     }
 }

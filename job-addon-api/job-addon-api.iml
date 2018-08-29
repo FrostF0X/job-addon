@@ -6,8 +6,8 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$MODULE_DIR$/target/classes" />
-    <output-test url="file://$MODULE_DIR$/target/test-classes" />
+    <output url="file://$MODULE_DIR$/../on-demand-job-api/target/classes" />
+    <output-test url="file://$MODULE_DIR$/../on-demand-job-api/target/test-classes" />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
@@ -17,6 +17,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.11.0" level="project" />
     <orderEntry type="library" name="Maven: org.jenkins-ci.plugins.workflow:workflow-aggregator:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.jenkins-ci.plugins.workflow:workflow-step-api:2.7" level="project" />
     <orderEntry type="library" name="Maven: org.jenkins-ci.plugins:structs:1.5" level="project" />

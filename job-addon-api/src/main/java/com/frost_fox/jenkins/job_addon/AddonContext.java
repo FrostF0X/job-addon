@@ -2,11 +2,11 @@ package com.frost_fox.jenkins.job_addon;
 
 import java.util.Objects;
 
-public class JobAddonContext {
+public class AddonContext {
     private final String executeUrl;
     private final String name;
 
-    public JobAddonContext(String executeUrl, String name) {
+    public AddonContext(String executeUrl, String name) {
         this.executeUrl = executeUrl;
         this.name = name;
     }
@@ -21,7 +21,7 @@ public class JobAddonContext {
 
     @Override
     public boolean equals(Object addonContext) {
-        return addonContext instanceof JobAddonContext && addonContext.hashCode() == hashCode();
+        return addonContext instanceof AddonContext && addonContext.hashCode() == hashCode();
     }
 
     @Override

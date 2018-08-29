@@ -6,13 +6,13 @@ import java.util.Objects;
 
 public class AddonContextAction extends InvisibleAction {
 
-    private final JobAddonContext context;
+    private final AddonContext context;
 
-    public AddonContextAction(JobAddonContext context) {
+    public AddonContextAction(AddonContext context) {
         this.context = context;
     }
 
-    public JobAddonContext getContext() {
+    public AddonContext getContext() {
         return context;
     }
 

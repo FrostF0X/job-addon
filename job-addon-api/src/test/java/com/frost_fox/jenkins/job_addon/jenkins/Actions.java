@@ -1,7 +1,7 @@
 package com.frost_fox.jenkins.job_addon.jenkins;
 
 import com.frost_fox.jenkins.job_addon.AddonContextAction;
-import com.frost_fox.jenkins.job_addon.JobAddonContext;
+import com.frost_fox.jenkins.job_addon.AddonContext;
 import hudson.model.Action;
 
 import java.util.ArrayList;
@@ -17,11 +17,11 @@ public class Actions {
         return new TestAction();
     }
 
-    public static List<Action> forAddonsContext(JobAddonContext context) {
+    public static List<Action> forAddonsContext(AddonContext context) {
         return Arrays.asList(addonContextAction(context), addonContextAction(context), addonContextAction(context));
     }
 
-    private static Action addonContextAction(JobAddonContext context) {
+    private static Action addonContextAction(AddonContext context) {
         return new AddonContextAction(context);
     }
 

@@ -1,6 +1,6 @@
 package com.frost_fox.jenkins.job_addon_grid;
 
-import com.frost_fox.jenkins.job_addon.api.JobAddonApiAction;
+import com.frost_fox.jenkins.job_addon.api.JobDescriptionApiAction;
 import hudson.Extension;
 import hudson.model.Action;
 import hudson.model.InvisibleAction;
@@ -18,7 +18,7 @@ public class JobAddonGridAction extends InvisibleAction {
     private final String url;
 
     public JobAddonGridAction(WorkflowJob job) {
-        this.url = (new JobAddonApiAction(job)).getFullUrl();
+        this.url = (new JobDescriptionApiAction(job)).getFullUrl();
     }
 
     public String getApiUrl() {

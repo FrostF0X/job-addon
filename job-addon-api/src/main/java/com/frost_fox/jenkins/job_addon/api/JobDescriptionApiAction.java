@@ -6,11 +6,11 @@ import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
 import hudson.model.UnprotectedRootAction;
 import org.jenkinsci.plugins.workflow.job.WorkflowJob;
 
-public class JobAddonApiAction implements UnprotectedRootAction {
+public class JobDescriptionApiAction implements UnprotectedRootAction {
 
     private WorkflowJob job;
 
-    public JobAddonApiAction(WorkflowJob job) {
+    public JobDescriptionApiAction(WorkflowJob job) {
         this.job = job;
     }
 

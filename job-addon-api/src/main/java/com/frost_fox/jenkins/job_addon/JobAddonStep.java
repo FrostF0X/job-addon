@@ -18,12 +18,12 @@ import java.util.Set;
 public class JobAddonStep extends Step implements Serializable {
 
     private static final long serialVersionUID = 1;
-    private final transient JobAddonContext targetJobContext;
+    private final transient AddonContext targetJobContext;
 
     @DataBoundConstructor
     public JobAddonStep(String name, String id) {
         Parameters parameters = new Parameters(name, id);
-        targetJobContext = new JobAddonContext(parameters.getName(), createExecuteUrl(parameters.getJob()));
+        targetJobContext = new AddonContext(parameters.getName(), createExecuteUrl(parameters.getJob()));
     }
 
     private String createExecuteUrl(Job job) {

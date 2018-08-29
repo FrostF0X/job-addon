@@ -1,7 +1,7 @@
 package com.frost_fox.jenkins.job_addon.addon;
 
 import com.frost_fox.jenkins.job_addon.AddonContextAction;
-import com.frost_fox.jenkins.job_addon.JobAddonContext;
+import com.frost_fox.jenkins.job_addon.AddonContext;
 
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ public class Addon {
     private final String name;
     private final String url;
 
-    public Addon(JobAddonContext context) {
+    public Addon(AddonContext context) {
         this.name = context.getName();
         this.url = context.getExecuteUrl();
     }
