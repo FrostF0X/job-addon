@@ -2,18 +2,17 @@ import React, {Component} from 'react';
 import './App.css';
 import Grid from "./grid/Grid";
 import Job from "./job/Job";
+import JobDescriptionLoader from "./job/integration/JobDescriptionLoader";
+import Environment from "./Environment";
+import {alignWithStageViewPlugin} from "./StagePluginIntegration";
 
 export default class App extends Component {
     constructor() {
         super();
-        this.data = {
-            description: ['Deploy Stage', 'Deploy Prod'],
-            executions: [
-                ['Deploy Stage', 'Deploy Prod'],
-                ['Deploy Stage', 'Deploy Prod']
-            ]
-        };
-        alignWithStageViewPlugin();
+        this.environment = determineEnvironment();
+        this.jobDescriptionLoader = new JobDescriptionLoader(this.environment);
+        alignWithStageViewPlugin(getPlugin());
+        this.data = this.jobDescriptionLoader.load();
     }
 
     render() {
@@ -21,24 +20,10 @@ export default class App extends Component {
     }
 }
 
-function appendToStageView() {
-    let jobAddonPlugin = document.getElementById('job-addon-grid');
-    let stageViewPluginRect = document.querySelector('.table-viewPort').getBoundingClientRect();
-
-    jobAddonPlugin.style.position = 'fixed';
-    jobAddonPlugin.style.display = 'block';
-    jobAddonPlugin.style.left = stageViewPluginRect.right + 2 + 'px';
-    jobAddonPlugin.style.top = stageViewPluginRect.top + 'px';
+function determineEnvironment() {
+    return new Environment(getPlugin().dataset.env);
 }
 
-function alignWithStageViewPlugin() {
-    const interval = setInterval(() => {
-        try {
-            appendToStageView();
-            window.addEventListener('scroll', appendToStageView);
-            window.addEventListener('resize', appendToStageView);
-            clearInterval(interval);
-        } catch (e) {
-        }
-    }, 200);
+function getPlugin() {
+    return document.getElementById('job-addon-grid');
 }
