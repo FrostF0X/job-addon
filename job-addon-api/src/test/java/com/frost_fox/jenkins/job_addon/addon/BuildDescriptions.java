@@ -4,11 +4,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class BuildDescriptions {
-    private static BuildDescription create(List<Addon> addons) {
+    private static BuildDescription create(List<AddonExecution> addons) {
         return new BuildDescription(addons, "id");
     }
 
-    public static List<BuildDescription> single(List<Addon> addons) {
+    public static List<BuildDescription> single(List<AddonExecution> addons) {
         return Collections.singletonList(BuildDescriptions.create(addons));
     }
 }

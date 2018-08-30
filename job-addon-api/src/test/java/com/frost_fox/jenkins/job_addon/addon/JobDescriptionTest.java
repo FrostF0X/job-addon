@@ -11,10 +11,10 @@ public class JobDescriptionTest {
 
     @Test
     public void createsDescriptionFromJob(){
-        JenkinsJob job = new JenkinsJob(Builds.singleBuildWithActions(Actions.forAddonsContext(Addons.context())));
+        JenkinsJob job = new JenkinsJob(Builds.singleBuildWithActions(Actions.forAddonsContext(AddonExecutions.context())));
 
         JobDescription description = JobDescription.from(job);
-        JobDescription expected = new JobDescription(BuildDescriptions.single(Addons.forContext(Addons.context())));
+        JobDescription expected = new JobDescription(BuildDescriptions.single(AddonExecutions.forContext(AddonExecutions.context())));
 
         assertEquals(description, expected);
     }
