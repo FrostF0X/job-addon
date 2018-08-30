@@ -15,18 +15,19 @@ export default class App extends Component {
         this.refresher = new JobDescriptionRefresher(this.loader, this);
         this.refresher.start();
         alignWithStageViewPlugin(getPlugin());
-        this.data = this.loader.load();
+        this.job = Job.default();
     }
 
     render() {
-        return (<Grid job={new Job(this.data)}/>);
+        return (<Grid job={this.job}/>);
     }
 
     /**
-     * @param jobDescription
+     * @param {Job} job
      */
-    loaded(jobDescription) {
-        this.data = jobDescription;
+    loaded(job) {
+        console.log(job);
+        this.job = job;
     }
 }
 

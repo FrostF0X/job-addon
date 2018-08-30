@@ -1,11 +1,27 @@
-import AddonSpecification from "./AddonSpecification";
 import Specification from "./Specification";
 import Execution from "./Execution";
-import AddOnExecution from "./AddonExecution";
 
-export default class JobInfo {
-    constructor(info) {
-        this.specification = new Specification(info.description.map(name => new AddonSpecification(name)));
-        this.executions = info.executions.map(execution => new Execution(execution.map(name => new AddOnExecution(name))));
+export default class Job {
+
+    /**
+     * @param {Specification} specification
+     * @param {Execution[]} executions
+     */
+    constructor(specification, executions) {
+        this.specification = specification;
+        this.executions = executions;
+    }
+
+    static default() {
+        return new Job(Specification.default(), []);
+    }
+
+    getExecutions() {
+        return this.executions;
+    }
+
+    // noinspection JSUnusedGlobalSymbols
+    getSpecification() {
+        return this.specification;
     }
 }

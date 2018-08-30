@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AddonSpecificationView from "./AddonSpecificationView";
+import AddonView from "./AddonSpecificationView";
 import "./SpecificationView.css";
 
 export default class SpecificationView extends Component {
@@ -7,8 +7,8 @@ export default class SpecificationView extends Component {
         return (
             <thead>
                 <tr className="job-grid-specification">
-                    {this.props.specification.addons.map(addon =>
-                        (<AddonSpecificationView addon={addon}/>)
+                    {this.props.specification.getAddons().forEach(addon =>
+                        (<AddonView addon={addon}/>)
                     )}
                 </tr>
             </thead>
