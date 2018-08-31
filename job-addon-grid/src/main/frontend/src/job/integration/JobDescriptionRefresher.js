@@ -12,8 +12,8 @@ export default class JobDescriptionRefresher {
     }
 
     start() {
-        setInterval(() => {
-            this.receiver.loaded(this.loader.load());
+        setInterval(async () => {
+            this.receiver.loaded(await this.loader.load());
         }, this.REFRESH_INTERVAL);
     }
 

@@ -40,7 +40,7 @@ export default class StaticJobDescriptionLoader {
         ]
     };
 
-    load() {
+    async load() {
         return JobFactory.fromResponse(this.DESCRIPTION);
     }
 }

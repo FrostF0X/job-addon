@@ -10,8 +10,9 @@ import JobDescriptionRefresher from "./job/integration/JobDescriptionRefresher";
 export default class App extends Component {
     constructor() {
         super();
-        this.environment = determineEnvironment();
-        this.loader = new JobDescriptionLoader(this.environment);
+        this.envSettings = getEnvSettings();
+        this.environment = determineEnvironment(this.envSettings);
+        this.loader = new JobDescriptionLoader(this.environment, this.envSettings);
         this.refresher = new JobDescriptionRefresher(this.loader, this);
         this.refresher.start();
         alignWithStageViewPlugin(getPlugin());
@@ -30,8 +31,12 @@ export default class App extends Component {
     }
 }
 
-function determineEnvironment() {
-    return new Environment(getPlugin().dataset.env);
+function determineEnvironment(envSettings) {
+    return new Environment(envSettings.env);
+}
+
+function getEnvSettings() {
+    return getPlugin().dataset;
 }
 
 function getPlugin() {
