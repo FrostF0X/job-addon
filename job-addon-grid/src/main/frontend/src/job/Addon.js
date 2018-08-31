@@ -4,14 +4,24 @@ export default class Addon {
         this.id = info.id;
     }
 
+    /**
+     * @returns {string}
+     */
     getName() {
         return this.name;
     }
 
+    /**
+     * @returns {string}
+     */
     getId() {
         return this.id;
     }
 
+    /**
+     * @param comparable
+     * @returns {boolean}
+     */
     equals(comparable){
         return comparable instanceof Addon &&
             this.name === comparable.name &&

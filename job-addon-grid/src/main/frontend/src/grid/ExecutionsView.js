@@ -3,9 +3,14 @@ import ExecutionView from "./ExecutionView";
 
 export default class ExecutionsView extends Component {
     render() {
-        return this.props.job.getExecutions().map(execution => {
-                return (<ExecutionView key={execution.getId()} execution={execution}/>);
+        return (
+            <tbody>
+            {this.props.job.getExecutions().map(execution =>
+                (<ExecutionView key={execution.getId()}
+                                specification={this.props.job.getSpecification()}
+                                execution={execution}/>))
             }
+            </tbody>
         )
     }
 }
