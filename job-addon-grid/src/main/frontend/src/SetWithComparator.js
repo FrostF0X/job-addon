@@ -26,4 +26,8 @@ export default class ComparatorSet {
     forEach(callback) {
         this.items.forEach(callback);
     }
+
+    map(callback) {
+        return this.items.map(callback);
+    }
 }
