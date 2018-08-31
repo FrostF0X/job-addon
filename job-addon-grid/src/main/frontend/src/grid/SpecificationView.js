@@ -8,7 +8,7 @@ export default class SpecificationView extends Component {
             <thead>
                 <tr className="job-grid-specification">
                     {this.props.specification.getAddons().map(addon =>
-                        (<AddonView addon={addon}/>)
+                        (<AddonView key={addon.getId()} addon={addon}/>)
                     )}
                 </tr>
             </thead>

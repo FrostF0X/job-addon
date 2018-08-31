@@ -8,6 +8,10 @@ export default class Addon {
         return this.name;
     }
 
+    getId() {
+        return this.id;
+    }
+
     equals(comparable){
         return comparable instanceof Addon &&
             this.name === comparable.name &&

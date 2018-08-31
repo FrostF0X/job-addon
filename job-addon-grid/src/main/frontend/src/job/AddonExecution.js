@@ -13,4 +13,8 @@ export default class AddonExecution {
     getName() {
         return this.addon.getName();
     }
+
+    getId() {
+        return this.addon.getId();
+    }
 }
