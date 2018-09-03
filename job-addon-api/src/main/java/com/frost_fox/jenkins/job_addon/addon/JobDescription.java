@@ -18,6 +18,7 @@ public class JobDescription {
         this.buildDescriptions = buildDescriptions;
     }
 
+    @SuppressWarnings("WeakerAccess")
     public List<BuildDescription> getBuildDescriptions() {
         return buildDescriptions;
     }
@@ -30,5 +31,14 @@ public class JobDescription {
     @Override
     public int hashCode() {
         return Objects.hash(buildDescriptions);
+    }
+
+    public AddonExecution getAddonByBuildIdAndJobId(String buildId, String jobId) throws Exception {
+        return getBuild(buildId).getAddonById(jobId);
+    }
+
+    private BuildDescription getBuild(String buildId) throws Exception {
+        return this.getBuildDescriptions().stream().filter(build -> build.getId().equals(buildId)).findFirst()
+                .orElseThrow(Exception::new);
     }
 }

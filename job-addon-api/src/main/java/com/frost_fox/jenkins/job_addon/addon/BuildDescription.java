@@ -12,11 +12,6 @@ public class BuildDescription {
     private List<AddonExecution> addonExecutions;
     private String id;
 
-    public BuildDescription(List<AddonExecution> addons, String id) {
-        this.addonExecutions = addons;
-        this.id = id;
-    }
-
     public static BuildDescription from(JenkinsBuild build) {
         return new BuildDescription(
                 build.getAddonActions().stream().map(AddonContextAction::getContext)
@@ -24,12 +19,23 @@ public class BuildDescription {
         );
     }
 
+    public BuildDescription(List<AddonExecution> addons, String id) {
+        this.addonExecutions = addons;
+        this.id = id;
+    }
+
+    @SuppressWarnings("WeakerAccess")
     public List<AddonExecution> getAddonExecutions() {
         return addonExecutions;
     }
 
     public String getId() {
         return id;
+    }
+
+    public AddonExecution getAddonById(String jobId) throws Exception {
+        return getAddonExecutions().stream().filter(execution -> execution.getId().equals(jobId)).findFirst()
+                .orElseThrow(Exception::new);
     }
 
     @Override

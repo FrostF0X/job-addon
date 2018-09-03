@@ -7,8 +7,10 @@ import java.util.List;
 
 public class Builds {
 
+    private static final String ID = "id";
+
     private static JenkinsBuild create(List<Action> actions) {
-        return new JenkinsBuild(actions, "id");
+        return new JenkinsBuild(actions, ID);
     }
 
     public static List<JenkinsBuild> threeBuildsWithActions(List<Action> actions) {
