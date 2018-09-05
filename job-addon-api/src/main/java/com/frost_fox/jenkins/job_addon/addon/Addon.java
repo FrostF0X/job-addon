@@ -6,20 +6,18 @@ import java.util.Objects;
 
 public class Addon {
 
-    private final String name;
-    private final String id;
+    private AddonContext context;
 
     public Addon(AddonContext context) {
-        this.name = context.getName();
-        this.id = context.getId();
+        this.context = context;
     }
 
     public String getName() {
-        return name;
+        return context.getName();
     }
 
     public String getId() {
-        return id;
+        return context.getId();
     }
 
     @Override
@@ -29,6 +27,6 @@ public class Addon {
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, id);
+        return Objects.hash(getName(), getId());
     }
 }

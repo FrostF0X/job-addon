@@ -5,10 +5,12 @@ import java.util.Objects;
 public class AddonContext {
     private final String name;
     private final String id;
+    private String lastRunId;
 
     public AddonContext(String id, String name) {
         this.name = name;
         this.id = id;
+        this.lastRunId = "";
     }
 
     public String getName() {
@@ -17,6 +19,14 @@ public class AddonContext {
 
     public String getId() {
         return id;
+    }
+
+    public String getLastRunId() {
+        return lastRunId;
+    }
+
+    public void setLastRunId(String lastRunId) {
+        this.lastRunId = lastRunId;
     }
 
     @Override

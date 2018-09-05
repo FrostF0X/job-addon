@@ -18,6 +18,7 @@
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/work" />
     </content>
+    <content url="file://$MODULE_DIR$/../on-demand-job-grid/src/test/java" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="job-addon-api" />
