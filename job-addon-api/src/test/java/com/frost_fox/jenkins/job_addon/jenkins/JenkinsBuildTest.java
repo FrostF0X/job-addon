@@ -1,7 +1,7 @@
 package com.frost_fox.jenkins.job_addon.jenkins;
 
 import com.frost_fox.jenkins.job_addon.AddonContextAction;
-import com.frost_fox.jenkins.job_addon.addon.AddonExecutions;
+import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

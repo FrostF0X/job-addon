@@ -1,23 +1,14 @@
-package com.frost_fox.jenkins.job_addon.addon;
+package com.frost_fox.jenkins.job_addon.addon.description;
 
-import com.frost_fox.jenkins.job_addon.AddonContextAction;
-import com.frost_fox.jenkins.job_addon.jenkins.JenkinsBuild;
+import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class BuildDescription {
 
     private List<AddonExecution> addonExecutions;
     private String id;
-
-    public static BuildDescription from(JenkinsBuild build) {
-        return new BuildDescription(
-                build.getAddonActions().stream().map(AddonContextAction::getContext)
-                        .map(AddonExecution::new).collect(Collectors.toList()), build.getId()
-        );
-    }
 
     public BuildDescription(List<AddonExecution> addons, String id) {
         this.addonExecutions = addons;

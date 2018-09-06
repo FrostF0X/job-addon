@@ -1,18 +1,13 @@
-package com.frost_fox.jenkins.job_addon.addon;
+package com.frost_fox.jenkins.job_addon.addon.description;
 
-import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
+import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class JobDescription {
 
     private List<BuildDescription> buildDescriptions;
-
-    public static JobDescription from(JenkinsJob job) {
-        return new JobDescription(job.getBuilds().stream().map(BuildDescription::from).collect(Collectors.toList()));
-    }
 
     public JobDescription(List<BuildDescription> buildDescriptions) {
         this.buildDescriptions = buildDescriptions;

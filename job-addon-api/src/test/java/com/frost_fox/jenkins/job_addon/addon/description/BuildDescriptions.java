@@ -1,4 +1,6 @@
-package com.frost_fox.jenkins.job_addon.addon;
+package com.frost_fox.jenkins.job_addon.addon.description;
+
+import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 
 import java.util.Collections;
 import java.util.List;

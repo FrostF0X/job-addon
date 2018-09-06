@@ -1,7 +1,9 @@
-package com.frost_fox.jenkins.job_addon.addon;
+package com.frost_fox.jenkins.job_addon.addon.description;
 
 import com.frost_fox.jenkins.job_addon.Ids;
-import org.junit.Test;
+import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
+import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutions;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,7 +17,7 @@ class BuildDescriptionTest {
 
         AddonExecution addonExecution = description.getAddonById(Ids.ID_FROM_IDS);
 
-        assertEquals(addonExecution.getId(), Ids.ID_NOT_FROM_IDS);
+        assertEquals(addonExecution.getId(), Ids.ID_FROM_IDS);
     }
 
 

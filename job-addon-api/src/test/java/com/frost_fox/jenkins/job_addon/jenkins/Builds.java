@@ -17,7 +17,7 @@ public class Builds {
         return buildsWithActions(3, actions);
     }
 
-    public static List<JenkinsBuild> singleBuildWithActions(List<Action> actions) {
+    public static List<JenkinsBuild> singleWithActions(List<Action> actions) {
         return buildsWithActions(1, actions);
     }
 
