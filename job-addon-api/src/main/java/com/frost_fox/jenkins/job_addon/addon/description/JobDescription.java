@@ -32,8 +32,8 @@ public class JobDescription {
         return getBuild(buildId).getAddonById(jobId);
     }
 
-    private BuildDescription getBuild(String buildId) throws Exception {
+    private BuildDescription getBuild(String buildId) throws NoSuchBuild {
         return this.getBuildDescriptions().stream().filter(build -> build.getId().equals(buildId)).findFirst()
-                .orElseThrow(Exception::new);
+                .orElseThrow(NoSuchBuild::new);
     }
 }

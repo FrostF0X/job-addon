@@ -24,9 +24,9 @@ public class BuildDescription {
         return id;
     }
 
-    public AddonExecution getAddonById(String jobId) throws Exception {
+    public AddonExecution getAddonById(String jobId) throws NoSuchAddon {
         return getAddonExecutions().stream().filter(execution -> execution.getId().equals(jobId)).findFirst()
-                .orElseThrow(Exception::new);
+                .orElseThrow(NoSuchAddon::new);
     }
 
     @Override

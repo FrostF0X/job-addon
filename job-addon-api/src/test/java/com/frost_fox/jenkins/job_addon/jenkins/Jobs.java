@@ -10,8 +10,11 @@ public class Jobs {
 
     public static final List<String> BUILD_IDS = Ids.IDS;
     public static final String BUILD_ID = Ids.ID_FROM_IDS;
+    public static final String NO_SUCH_BUILD_ID = Ids.ID_NOT_FROM_IDS;
     public static final List<String> ADDON_IDS = Ids.IDS2;
     public static final String ADDON_ID = Ids.ID_FROM_IDS2;
+    public static final String NO_SUCH_ADDON_ID = Ids.ID_NOT_FROM_IDS;
+
 
 
     public static JenkinsJob jobWithSomeBuildsAndAddonActions() {

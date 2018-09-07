@@ -1,5 +1,6 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
+import com.frost_fox.jenkins.job_addon.NoSuchEntity;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepositoryException;
 import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
@@ -7,7 +8,7 @@ import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
 
 public class AddonExecuteUseCase {
 
-    private static final String GENERIC_ERROR = "Some generic exception happened (something went wrong)";
+    public static final String GENERIC_ERROR = "Some generic exception happened (something went wrong)";
     private AddonRepository repository;
     private JobDescriptionFactory descriptionFactory;
 
@@ -22,7 +23,7 @@ public class AddonExecuteUseCase {
             execution.start();
             repository.save(execution);
             return execution.getLastExecutionId();
-        } catch (AddonRepositoryException | AddonExecutionException e) {
+        } catch (NoSuchEntity | AddonRepositoryException | AddonExecutionException e) {
             return e.getMessage();
         } catch (Exception e) {
             return GENERIC_ERROR;

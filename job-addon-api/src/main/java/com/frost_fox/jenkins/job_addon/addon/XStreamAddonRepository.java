@@ -25,7 +25,7 @@ public class XStreamAddonRepository implements AddonRepository {
         try {
             this.job.save();
         } catch (Exception e) {
-            throw new AddonRepositoryException("Can't save changes to repository");
+            throw new AddonRepositoryException(MESSAGE);
         }
     }
 }

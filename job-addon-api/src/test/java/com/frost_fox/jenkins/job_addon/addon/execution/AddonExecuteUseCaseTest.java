@@ -2,43 +2,99 @@ package com.frost_fox.jenkins.job_addon.addon.execution;
 
 
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
+import com.frost_fox.jenkins.job_addon.addon.AddonRepositoryException;
 import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
+import com.frost_fox.jenkins.job_addon.addon.description.NoSuchAddon;
+import com.frost_fox.jenkins.job_addon.addon.description.NoSuchBuild;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
-import com.frost_fox.jenkins.job_addon.jenkins.Jobs;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.frost_fox.jenkins.job_addon.jenkins.Jobs.*;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
 import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 
 @RunWith(MockitoJUnitRunner.class)
 public class AddonExecuteUseCaseTest {
 
+    private static final String EXCEPTION_MESSAGE = "exception message";
     @Mock
     private AddonRepository addonRepository;
     @Mock
-    private AddonExecutionManager manager;
+    private AddonExecutionManager executionManager;
     private JobDescriptionFactory factory;
     private AddonExecuteUseCase useCase;
 
     @Test
     public void returnsJobIdIfSuchJobExistsIn() throws AddonExecutionException {
-        JenkinsJob description = Jobs.jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
 
-        given(manager.startAndGetId(any())).willReturn("id");
+        doReturn("id").when(executionManager).startAndGetId(any());
 
-        String result = useCase.execute(Jobs.BUILD_ID, Jobs.ADDON_ID, description);
+        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
         assertThat(result).isEqualTo("id");
     }
 
+    @Test
+    public void returnsNoSuchBuildMessageIfSuchBuildNotExists(){
+        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+
+        String result = useCase.execute(NO_SUCH_BUILD_ID, ADDON_ID, job);
+
+        assertThat(result).isEqualTo(NoSuchBuild.MESSAGE);
+    }
+
+    @Test
+    public void returnsNoSuchAddonMessageIfSuchAddonNotExists(){
+        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+
+        String result = useCase.execute(BUILD_ID, NO_SUCH_ADDON_ID, job);
+
+        assertThat(result).isEqualTo(NoSuchAddon.MESSAGE);
+    }
+
+    @Test
+    public void returnsRepositoryErrorMessageIfRepositoryCantSaveAddonExecution() {
+        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+
+        doThrow(new AddonRepositoryException(EXCEPTION_MESSAGE)).when(addonRepository).save(any(AddonExecution.class));
+
+        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+
+        assertThat(result).isEqualTo(EXCEPTION_MESSAGE);
+    }
+
+    @Test
+    public void returnsExecutionErrorMessageIfAddonCannotBeExecuted() throws AddonExecutionException {
+        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+
+        doThrow(new AddonExecutionException(EXCEPTION_MESSAGE)).when(executionManager).startAndGetId(any());
+
+        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+
+        assertThat(result).isEqualTo(EXCEPTION_MESSAGE);
+    }
+
+    @Test
+    public void returnsGenericErrorMessageIfSomethingWentWrong() throws AddonExecutionException {
+        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+
+        doThrow(new RuntimeException()).when(executionManager).startAndGetId(any());
+
+        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+
+        assertThat(result).isEqualTo(AddonExecuteUseCase.GENERIC_ERROR);
+    }
+
     @Before
     public void setUp() {
-        factory = new JobDescriptionFactory(manager);
+        factory = new JobDescriptionFactory(executionManager);
         useCase = new AddonExecuteUseCase(addonRepository, factory);
     }
 
