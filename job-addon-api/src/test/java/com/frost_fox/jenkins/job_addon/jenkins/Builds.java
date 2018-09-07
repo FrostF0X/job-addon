@@ -1,38 +1,31 @@
 package com.frost_fox.jenkins.job_addon.jenkins;
 
+import com.frost_fox.jenkins.job_addon.Ids;
 import hudson.model.Action;
 
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Builds {
 
-    private static final String ID = "id";
-
-    private static JenkinsBuild create(List<Action> actions) {
-        return new JenkinsBuild(actions, ID);
-    }
-
-    public static List<JenkinsBuild> threeBuildsWithActions(List<Action> actions) {
-        return buildsWithActions(3, actions);
-    }
-
     public static List<JenkinsBuild> singleWithActions(List<Action> actions) {
-        return buildsWithActions(1, actions);
+        return manyWithIds(Ids.SINGLE, actions);
     }
 
-
-    public static JenkinsBuild buildWithActions(List<Action> actions) {
-        return buildsWithActions(1, actions).get(0);
+    public static JenkinsBuild singleOneWithActions(List<Action> actions) {
+        return manyWithIds(Ids.SINGLE, actions).get(0);
     }
 
-
-    public static List<JenkinsBuild> buildsWithActions(int count, List<Action> actions) {
-        List<JenkinsBuild> builds = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            builds.add(create(actions));
-        }
-        return builds;
+    public static List<JenkinsBuild> exactCountWithActions(int id, List<Action> actions){
+        return manyWithIds(Ids.exactCount(id), actions);
     }
 
+    public static List<JenkinsBuild> manyWithIds(List<String> ids, List<Action> actions) {
+        return ids.stream().map(id -> new JenkinsBuild(actions, id)).collect(Collectors.toList());
+    }
+
+    public static List<JenkinsBuild> singleOne(String id, List<Action> actions) {
+        return manyWithIds(Collections.singletonList(id), actions);
+    }
 }

@@ -2,6 +2,7 @@ package com.frost_fox.jenkins.job_addon.api;
 
 import com.cloudbees.workflow.util.ServeJson;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
+import com.frost_fox.jenkins.job_addon.addon.XStreamAddonRepository;
 import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecuteUseCase;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
@@ -17,8 +18,8 @@ public class AddonExecutionApiAction implements UnprotectedRootAction {
 
     public AddonExecutionApiAction(WorkflowJob job) {
         this.job = job;
-        repository = new AddonRepository(job);
-        executeUseCase = new AddonExecuteUseCase(repository, JenkinsJob.from(job), JobDescriptionFactory.get());
+        repository = new XStreamAddonRepository(job);
+        executeUseCase = new AddonExecuteUseCase(repository, JobDescriptionFactory.get());
     }
 
 
@@ -40,6 +41,6 @@ public class AddonExecutionApiAction implements UnprotectedRootAction {
     @ServeJson
     public Object doIndex(@QueryParameter(required = true, value = "job") String jobId,
                           @QueryParameter(required = true, value = "build") String buildId) {
-        return executeUseCase.execute(jobId, buildId);
+        return executeUseCase.execute(jobId, buildId, JenkinsJob.from(job));
     }
 }

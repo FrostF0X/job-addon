@@ -1,14 +1,19 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
 import com.frost_fox.jenkins.job_addon.AddonContext;
+import com.frost_fox.jenkins.job_addon.addon.description.FakeAddonExecutionManager;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.frost_fox.jenkins.job_addon.addon.AddonContexts.contextsForIds;
+
 public class AddonExecutions {
 
-    private static final String ID = "id";
+    public static List<AddonExecution> forIds(List<String> ids) {
+        return forContexts(contextsForIds(ids));
+    }
 
     public static List<AddonExecution> forContexts(List<AddonContext> contexts) {
         return contexts.stream().map(AddonExecutions::addonWithContext).collect(Collectors.toList());
@@ -22,15 +27,4 @@ public class AddonExecutions {
         return new AddonExecution(context, new FakeAddonExecutionManager());
     }
 
-    public static AddonContext context() {
-        return new AddonContext(ID, "name");
-    }
-
-    private static AddonContext contextWithId(String id) {
-        return new AddonContext(id, "name");
-    }
-
-    public static List<AddonContext> contextsForIds(List<String> ids) {
-        return ids.stream().map(AddonExecutions::contextWithId).collect(Collectors.toList());
-    }
 }

@@ -9,21 +9,19 @@ public class AddonExecuteUseCase {
 
     private static final String GENERIC_ERROR = "Some generic exception happened (something went wrong)";
     private AddonRepository repository;
-    private JenkinsJob job;
     private JobDescriptionFactory descriptionFactory;
 
-    public AddonExecuteUseCase(AddonRepository repository, JenkinsJob job, JobDescriptionFactory descriptionFactory) {
+    public AddonExecuteUseCase(AddonRepository repository, JobDescriptionFactory descriptionFactory) {
         this.repository = repository;
-        this.job = job;
         this.descriptionFactory = descriptionFactory;
     }
 
-    public String execute(String buildId, String jobId) {
+    public String execute(String buildId, String jobId, JenkinsJob job) {
         try {
             AddonExecution execution = descriptionFactory.create(job).getAddonByBuildIdAndJobId(buildId, jobId);
             execution.start();
             repository.save(execution);
-            return "Started job with id " + execution.getLastExecutionId();
+            return execution.getLastExecutionId();
         } catch (AddonRepositoryException | AddonExecutionException e) {
             return e.getMessage();
         } catch (Exception e) {
