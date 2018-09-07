@@ -1,6 +1,7 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
 import com.frost_fox.jenkins.job_addon.NoSuchEntity;
+import com.frost_fox.jenkins.job_addon.Result;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepositoryException;
 import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
@@ -17,16 +18,16 @@ public class AddonExecuteUseCase {
         this.descriptionFactory = descriptionFactory;
     }
 
-    public String execute(String buildId, String jobId, JenkinsJob job) {
+    public Result<String> execute(String buildId, String jobId, JenkinsJob job) {
         try {
             AddonExecution execution = descriptionFactory.create(job).getAddonByBuildIdAndJobId(buildId, jobId);
             execution.start();
             repository.save(execution);
-            return execution.getLastExecutionId();
+            return Result.successfulWith(execution.getLastExecutionId());
         } catch (NoSuchEntity | AddonRepositoryException | AddonExecutionException e) {
-            return e.getMessage();
+            return Result.failedWith(e.getMessage());
         } catch (Exception e) {
-            return GENERIC_ERROR;
+            return Result.failedWith(GENERIC_ERROR);
         }
     }
 

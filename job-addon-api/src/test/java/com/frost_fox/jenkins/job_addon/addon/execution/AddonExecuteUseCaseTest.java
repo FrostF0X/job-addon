@@ -1,6 +1,7 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
 
+import com.frost_fox.jenkins.job_addon.Result;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepositoryException;
 import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
@@ -13,8 +14,8 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.frost_fox.jenkins.job_addon.ResultAssert.assertThat;
 import static com.frost_fox.jenkins.job_addon.jenkins.Jobs.*;
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
@@ -36,27 +37,27 @@ public class AddonExecuteUseCaseTest {
 
         doReturn("id").when(executionManager).startAndGetId(any());
 
-        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+        Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
-        assertThat(result).isEqualTo("id");
+        assertThat(result).successfulWith("id");
     }
 
     @Test
     public void returnsNoSuchBuildMessageIfSuchBuildNotExists(){
         JenkinsJob job = jobWithSomeBuildsAndAddonActions();
 
-        String result = useCase.execute(NO_SUCH_BUILD_ID, ADDON_ID, job);
+        Result<String> result = useCase.execute(NO_SUCH_BUILD_ID, ADDON_ID, job);
 
-        assertThat(result).isEqualTo(NoSuchBuild.MESSAGE);
+        assertThat(result).failedWith(NoSuchBuild.MESSAGE);
     }
 
     @Test
     public void returnsNoSuchAddonMessageIfSuchAddonNotExists(){
         JenkinsJob job = jobWithSomeBuildsAndAddonActions();
 
-        String result = useCase.execute(BUILD_ID, NO_SUCH_ADDON_ID, job);
+        Result<String> result = useCase.execute(BUILD_ID, NO_SUCH_ADDON_ID, job);
 
-        assertThat(result).isEqualTo(NoSuchAddon.MESSAGE);
+        assertThat(result).failedWith(NoSuchAddon.MESSAGE);
     }
 
     @Test
@@ -65,9 +66,9 @@ public class AddonExecuteUseCaseTest {
 
         doThrow(new AddonRepositoryException(EXCEPTION_MESSAGE)).when(addonRepository).save(any(AddonExecution.class));
 
-        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+        Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
-        assertThat(result).isEqualTo(EXCEPTION_MESSAGE);
+        assertThat(result).failedWith(EXCEPTION_MESSAGE);
     }
 
     @Test
@@ -76,9 +77,9 @@ public class AddonExecuteUseCaseTest {
 
         doThrow(new AddonExecutionException(EXCEPTION_MESSAGE)).when(executionManager).startAndGetId(any());
 
-        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+        Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
-        assertThat(result).isEqualTo(EXCEPTION_MESSAGE);
+        assertThat(result).failedWith(EXCEPTION_MESSAGE);
     }
 
     @Test
@@ -87,9 +88,9 @@ public class AddonExecuteUseCaseTest {
 
         doThrow(new RuntimeException()).when(executionManager).startAndGetId(any());
 
-        String result = useCase.execute(BUILD_ID, ADDON_ID, job);
+        Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
-        assertThat(result).isEqualTo(AddonExecuteUseCase.GENERIC_ERROR);
+        assertThat(result).failedWith(AddonExecuteUseCase.GENERIC_ERROR);
     }
 
     @Before
