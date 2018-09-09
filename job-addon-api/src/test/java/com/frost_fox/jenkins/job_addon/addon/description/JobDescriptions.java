@@ -14,7 +14,7 @@ public class JobDescriptions {
     }
 
     public static JobDescription common() {
-        return get().create();
+        return get().all();
     }
 
     public JobDescriptions withBuilds(BuildDescriptions builds) {
@@ -22,8 +22,8 @@ public class JobDescriptions {
         return this;
     }
 
-    public JobDescription create() {
-        return new JobDescription(builds.create());
+    public JobDescription all() {
+        return new JobDescription(builds.all());
     }
 
 }

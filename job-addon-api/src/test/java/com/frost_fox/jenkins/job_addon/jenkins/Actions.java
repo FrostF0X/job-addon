@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface Actions {
 
-    List<Action> create();
+    List<Action> all();
 
 }

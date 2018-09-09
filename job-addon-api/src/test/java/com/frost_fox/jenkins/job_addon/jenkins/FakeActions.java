@@ -19,7 +19,7 @@ public class FakeActions implements Actions {
         return new FakeActions();
     }
 
-    public List<Action> create() {
+    public List<Action> all() {
         return ids.stream().map(FakeAction::new).collect(Collectors.toList());
     }
 

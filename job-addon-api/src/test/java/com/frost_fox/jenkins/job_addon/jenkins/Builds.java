@@ -38,15 +38,15 @@ public class Builds {
         return this;
     }
 
-    public List<JenkinsBuild> create() {
-        return ids.stream().map(id -> new JenkinsBuild(actions.create(), id)).collect(Collectors.toList());
+    public List<JenkinsBuild> all() {
+        return ids.stream().map(id -> new JenkinsBuild(actions.all(), id)).collect(Collectors.toList());
     }
 
     public Builds withCount(int count) {
         return withIds(Ids.exactCount(count));
     }
 
-    public JenkinsBuild single() {
-        return create().get(0);
+    public JenkinsBuild one() {
+        return all().get(0);
     }
 }

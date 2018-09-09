@@ -32,8 +32,8 @@ public class ContextActions implements Actions {
     }
 
     @Override
-    public List<Action> create() {
-        List<Action> actions = contexts.create().stream().map(AddonContextAction::new)
+    public List<Action> all() {
+        List<Action> actions = contexts.all().stream().map(AddonContextAction::new)
                 .map(action -> (Action) action).collect(Collectors.toList());
         actions.addAll(getAdditionalActions());
         return actions;
@@ -43,7 +43,7 @@ public class ContextActions implements Actions {
         if(additionalActions == null) {
             return new ArrayList<>();
         }
-        return additionalActions.create();
+        return additionalActions.all();
     }
 
 }

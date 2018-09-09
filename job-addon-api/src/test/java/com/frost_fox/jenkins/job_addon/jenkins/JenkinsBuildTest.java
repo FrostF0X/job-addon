@@ -12,20 +12,20 @@ public class JenkinsBuildTest {
 
     @Test
     public void returnsAllAddonActionsTakenFromAddonContextActions() {
-        JenkinsBuild build = Builds.get().withActions(ContextActions.get().forContexts(AddonContexts.get())).single();
+        JenkinsBuild build = Builds.get().withActions(ContextActions.get().forContexts(AddonContexts.get())).one();
 
         List<AddonContextAction> extractedAddons = build.getAddonActions();
 
-        assertThat(extractedAddons).isEqualTo(ContextActions.get().forContexts(AddonContexts.get()).create());
+        assertThat(extractedAddons).isEqualTo(ContextActions.get().forContexts(AddonContexts.get()).all());
     }
 
     @Test
     public void returnsOnlyAddonActionsFromAllActions() {
         JenkinsBuild build = Builds.get().withActions(ContextActions.get()
-                        .forContexts(AddonContexts.get()).and(FakeActions.get())).single();
+                        .forContexts(AddonContexts.get()).and(FakeActions.get())).one();
 
         List<AddonContextAction> extractedAddons = build.getAddonActions();
 
-        assertThat(extractedAddons).isEqualTo(ContextActions.get().forContexts(AddonContexts.get()).create());
+        assertThat(extractedAddons).isEqualTo(ContextActions.get().forContexts(AddonContexts.get()).all());
     }
 }

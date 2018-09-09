@@ -16,7 +16,7 @@ public class BuildDescriptionTest {
 
     @Test
     public void returnsAddonExecutionIfAddonExists() throws Exception {
-        BuildDescription description = BuildDescriptions.get().single();
+        BuildDescription description = BuildDescriptions.get().one();
 
         AddonExecution addonExecution = description.getAddonById(ID);
 
@@ -25,7 +25,7 @@ public class BuildDescriptionTest {
 
     @Test
     public void returnsNoSuchAddonExceptionIfAddonNotExists() throws Exception {
-        BuildDescription description = BuildDescriptions.get().single();
+        BuildDescription description = BuildDescriptions.get().one();
 
         exception.expect(NoSuchAddon.class);
 

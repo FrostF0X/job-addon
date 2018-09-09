@@ -36,11 +36,11 @@ public class AddonContexts {
         return this;
     }
 
-    public List<AddonContext> create() {
+    public List<AddonContext> all() {
         return ids.stream().map(id -> new AddonContext(id, name)).collect(Collectors.toList());
     }
 
-    public AddonContext single() {
-        return create().get(0);
+    public AddonContext one() {
+        return all().get(0);
     }
 }

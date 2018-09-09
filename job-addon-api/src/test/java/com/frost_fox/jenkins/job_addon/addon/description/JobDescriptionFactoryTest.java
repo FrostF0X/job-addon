@@ -15,11 +15,11 @@ public class JobDescriptionFactoryTest {
 
     @Test
     public void createsDescriptionFromJob() {
-        ContextActions actions = ContextActions.get().forContexts(AddonContexts.get());
-        JenkinsJob job = Jobs.get().withBuilds(Builds.get().withId("id").withActions(actions)).create();
+        JenkinsJob job = Jobs.get().withBuilds(Builds.get().withId("id")
+                .withActions(ContextActions.get().forContexts(AddonContexts.get()))).all();
 
-        AddonExecutions addonExecutions = AddonExecutions.get().forContexts(AddonContexts.get());
-        JobDescription expected = JobDescriptions.get().withBuilds(BuildDescriptions.get().withId("id").withExecutions(addonExecutions)).create();
+        JobDescription expected = JobDescriptions.get().withBuilds(BuildDescriptions.get().withId("id")
+                .withExecutions(AddonExecutions.get().forContexts(AddonContexts.get()))).all();
 
         JobDescription description = factory.create(job);
 

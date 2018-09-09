@@ -26,8 +26,8 @@ public class AddonExecutions {
         return this;
     }
 
-    public List<AddonExecution> create() {
-        return this.contexts.create().stream().map(this::createAddonExecution).collect(Collectors.toList());
+    public List<AddonExecution> all() {
+        return this.contexts.all().stream().map(this::createAddonExecution).collect(Collectors.toList());
     }
 
     private AddonExecution createAddonExecution(AddonContext context) {

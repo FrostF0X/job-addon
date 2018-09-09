@@ -37,15 +37,15 @@ public class BuildDescriptions {
         return this;
     }
 
-    public List<BuildDescription> create() {
+    public List<BuildDescription> all() {
         return ids.stream().map(this::buildForId).collect(Collectors.toList());
     }
 
-    public BuildDescription single() {
-        return create().get(0);
+    public BuildDescription one() {
+        return all().get(0);
     }
 
     private BuildDescription buildForId(String id) {
-        return new BuildDescription(addonExecutions.create(), id);
+        return new BuildDescription(addonExecutions.all(), id);
     }
 }

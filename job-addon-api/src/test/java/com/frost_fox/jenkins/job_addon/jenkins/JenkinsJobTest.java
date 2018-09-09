@@ -16,17 +16,17 @@ public class JenkinsJobTest {
 
     @Test
     public void returnsOnlyTenLastBuilds() {
-        JenkinsJob job = Jobs.get().withBuilds(Builds.get().withCount(MORE)).create();
+        JenkinsJob job = Jobs.get().withBuilds(Builds.get().withCount(MORE)).all();
 
         List<JenkinsBuild> acquiredBuilds = job.getBuilds();
-        assertThat(acquiredBuilds).isEqualTo(Builds.get().withCount(MAX).create());
+        assertThat(acquiredBuilds).isEqualTo(Builds.get().withCount(MAX).all());
     }
 
     @Test
     public void returnsSameBuildsIfLessThatTenGiven() {
-        JenkinsJob job = Jobs.get().withBuilds(Builds.get().withCount(LESS)).create();
+        JenkinsJob job = Jobs.get().withBuilds(Builds.get().withCount(LESS)).all();
 
         List<JenkinsBuild> acquiredBuilds = job.getBuilds();
-        assertThat(acquiredBuilds).isEqualTo(Builds.get().withCount(LESS).create());
+        assertThat(acquiredBuilds).isEqualTo(Builds.get().withCount(LESS).all());
     }
 }

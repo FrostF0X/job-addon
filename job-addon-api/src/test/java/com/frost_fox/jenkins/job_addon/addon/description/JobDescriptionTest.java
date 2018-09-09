@@ -17,7 +17,7 @@ public class JobDescriptionTest {
 
     @Test
     public void returnsAddonByBuildIdAndJobIdIfSuchExists() throws Exception {
-        JobDescription descriptionWithBuildsWithIds = JobDescriptions.get().create();
+        JobDescription descriptionWithBuildsWithIds = JobDescriptions.get().all();
 
         AddonExecution addon = descriptionWithBuildsWithIds.getAddonByBuildIdAndJobId(BUILD_ID, ADDON_ID);
 
@@ -26,7 +26,7 @@ public class JobDescriptionTest {
 
     @Test
     public void throwsExceptionIfSuchBuildIdNotExists() throws Exception {
-        JobDescription descriptionWithBuildsWithIds = JobDescriptions.get().create();
+        JobDescription descriptionWithBuildsWithIds = JobDescriptions.get().all();
 
         exception.expect(NoSuchBuild.class);
 

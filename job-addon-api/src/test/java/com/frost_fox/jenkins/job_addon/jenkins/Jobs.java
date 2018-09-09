@@ -14,7 +14,7 @@ public class Jobs {
     }
 
     public static JenkinsJob common() {
-        return get().create();
+        return get().all();
     }
 
     public Jobs withBuilds(Builds builds) {
@@ -22,8 +22,8 @@ public class Jobs {
         return this;
     }
 
-    public JenkinsJob create() {
-        return JenkinsJob.from(builds.create());
+    public JenkinsJob all() {
+        return JenkinsJob.from(builds.all());
     }
 
 }
