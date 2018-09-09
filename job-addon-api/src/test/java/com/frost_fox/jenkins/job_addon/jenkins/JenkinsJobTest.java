@@ -5,8 +5,8 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 
 public class JenkinsJobTest {
 
@@ -16,17 +16,17 @@ public class JenkinsJobTest {
 
     @Test
     public void returnsOnlyTenLastBuilds() {
-        JenkinsJob job = new JenkinsJob(Builds.exactCountWithActions(MORE, Actions.arbitraryActions()));
+        JenkinsJob job = JobBuilder.get().withBuilds(BuildBuilder.get().withCount(MORE)).create();
 
         List<JenkinsBuild> acquiredBuilds = job.getBuilds();
-        assertThat(acquiredBuilds, is(Builds.exactCountWithActions(MAX, Actions.arbitraryActions())));
+        assertThat(acquiredBuilds).isEqualTo(BuildBuilder.get().withCount(MAX).create());
     }
 
     @Test
     public void returnsSameBuildsIfLessThatTenGiven() {
-        JenkinsJob job = new JenkinsJob(Builds.exactCountWithActions(LESS, Actions.arbitraryActions()));
+        JenkinsJob job = JobBuilder.get().withBuilds(BuildBuilder.get().withCount(LESS)).create();
 
         List<JenkinsBuild> acquiredBuilds = job.getBuilds();
-        assertThat(acquiredBuilds, is(Builds.exactCountWithActions(LESS, Actions.arbitraryActions())));
+        assertThat(acquiredBuilds).isEqualTo(BuildBuilder.get().withCount(LESS).create());
     }
 }

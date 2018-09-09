@@ -8,6 +8,7 @@ import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
 import com.frost_fox.jenkins.job_addon.addon.description.NoSuchAddon;
 import com.frost_fox.jenkins.job_addon.addon.description.NoSuchBuild;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
+import com.frost_fox.jenkins.job_addon.jenkins.JobBuilder;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +16,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static com.frost_fox.jenkins.job_addon.ResultAssert.assertThat;
-import static com.frost_fox.jenkins.job_addon.jenkins.Jobs.*;
+import static com.frost_fox.jenkins.job_addon.jenkins.JobBuilder.*;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.doThrow;
@@ -33,7 +34,7 @@ public class AddonExecuteUseCaseTest {
 
     @Test
     public void returnsJobIdIfSuchJobExistsIn() throws AddonExecutionException {
-        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = JobBuilder.common();
 
         doReturn("id").when(executionManager).startAndGetId(any());
 
@@ -44,7 +45,7 @@ public class AddonExecuteUseCaseTest {
 
     @Test
     public void returnsNoSuchBuildMessageIfSuchBuildNotExists(){
-        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = JobBuilder.common();
 
         Result<String> result = useCase.execute(NO_SUCH_BUILD_ID, ADDON_ID, job);
 
@@ -53,7 +54,7 @@ public class AddonExecuteUseCaseTest {
 
     @Test
     public void returnsNoSuchAddonMessageIfSuchAddonNotExists(){
-        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = JobBuilder.common();
 
         Result<String> result = useCase.execute(BUILD_ID, NO_SUCH_ADDON_ID, job);
 
@@ -62,7 +63,7 @@ public class AddonExecuteUseCaseTest {
 
     @Test
     public void returnsRepositoryErrorMessageIfRepositoryCantSaveAddonExecution() {
-        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = JobBuilder.common();
 
         doThrow(new AddonRepositoryException(EXCEPTION_MESSAGE)).when(addonRepository).save(any(AddonExecution.class));
 
@@ -73,7 +74,7 @@ public class AddonExecuteUseCaseTest {
 
     @Test
     public void returnsExecutionErrorMessageIfAddonCannotBeExecuted() throws AddonExecutionException {
-        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = JobBuilder.common();
 
         doThrow(new AddonExecutionException(EXCEPTION_MESSAGE)).when(executionManager).startAndGetId(any());
 
@@ -84,7 +85,7 @@ public class AddonExecuteUseCaseTest {
 
     @Test
     public void returnsGenericErrorMessageIfSomethingWentWrong() throws AddonExecutionException {
-        JenkinsJob job = jobWithSomeBuildsAndAddonActions();
+        JenkinsJob job = JobBuilder.common();
 
         doThrow(new RuntimeException()).when(executionManager).startAndGetId(any());
 

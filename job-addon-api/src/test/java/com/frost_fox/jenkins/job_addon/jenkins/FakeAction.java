@@ -2,7 +2,12 @@ package com.frost_fox.jenkins.job_addon.jenkins;
 
 import hudson.model.Action;
 
-public class TestAction implements Action {
+public class FakeAction implements Action {
+    public FakeAction(String id) {
+    }
+
+    public FakeAction(){}
+
     @Override
     public String getIconFileName() {
         return null;
@@ -20,6 +25,6 @@ public class TestAction implements Action {
 
     @Override
     public boolean equals(Object action) {
-        return action instanceof TestAction;
+        return action instanceof FakeAction;
     }
 }

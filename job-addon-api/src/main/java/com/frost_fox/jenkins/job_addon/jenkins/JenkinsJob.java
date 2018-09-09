@@ -16,6 +16,11 @@ public class JenkinsJob {
         return new JenkinsJob(((List<Run>) job.getBuilds()).stream().map(JenkinsBuild::new).collect(Collectors.toList()));
     }
 
+    public static JenkinsJob from(List<JenkinsBuild> builds) {
+        return new JenkinsJob(builds);
+    }
+
+    @SuppressWarnings("WeakerAccess")
     public JenkinsJob(List<JenkinsBuild> builds) {
         this.builds = getLast(builds);
     }

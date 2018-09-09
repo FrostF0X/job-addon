@@ -1,12 +1,12 @@
 package com.frost_fox.jenkins.job_addon.addon.description;
 
-import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutions;
-import com.frost_fox.jenkins.job_addon.jenkins.Actions;
-import com.frost_fox.jenkins.job_addon.jenkins.Builds;
+import com.frost_fox.jenkins.job_addon.addon.AddonContextBuilder;
+import com.frost_fox.jenkins.job_addon.jenkins.BuildBuilder;
+import com.frost_fox.jenkins.job_addon.jenkins.ContextActionBuilder;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
+import com.frost_fox.jenkins.job_addon.jenkins.JobBuilder;
 import org.junit.Test;
 
-import static com.frost_fox.jenkins.job_addon.addon.AddonContexts.context;
 import static org.junit.Assert.assertEquals;
 
 public class JobDescriptionFactoryTest {
@@ -15,10 +15,13 @@ public class JobDescriptionFactoryTest {
 
     @Test
     public void createsDescriptionFromJob() {
-        JenkinsJob job = new JenkinsJob(Builds.singleOne("id", Actions.forAddonContext(context())));
+        ContextActionBuilder actions = ContextActionBuilder.get().forContexts(AddonContextBuilder.get());
+        JenkinsJob job = JobBuilder.get().withBuilds(BuildBuilder.get().withId("id").withActions(actions)).create();
+
+        AddonExecutionBuilder addonExecutions = AddonExecutionBuilder.get().forContexts(AddonContextBuilder.get());
+        JobDescription expected = JobDescriptionBuilder.get().withBuilds(BuildDescriptionBuilder.get().withId("id").withExecutions(addonExecutions)).create();
 
         JobDescription description = factory.create(job);
-        JobDescription expected = new JobDescription(BuildDescriptions.single("id", AddonExecutions.forContext(context())));
 
         assertEquals(description, expected);
     }
