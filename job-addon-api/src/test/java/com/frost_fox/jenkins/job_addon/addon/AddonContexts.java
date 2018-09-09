@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AddonContextBuilder {
+public class AddonContexts {
 
     public static final String NAME = "name";
     public static final List<String> IDS = Ids.IDS;
@@ -17,21 +17,21 @@ public class AddonContextBuilder {
     private List<String> ids = IDS;
     private String name = NAME;
 
-    public static AddonContextBuilder get(){
-        return new AddonContextBuilder();
+    public static AddonContexts get(){
+        return new AddonContexts();
     }
 
-    public AddonContextBuilder withIds(List<String> ids) {
+    public AddonContexts withIds(List<String> ids) {
         this.ids = ids;
         return this;
     }
 
-    public AddonContextBuilder withId(String id) {
+    public AddonContexts withId(String id) {
         this.ids = Collections.singletonList(id);
         return this;
     }
 
-    public AddonContextBuilder withName(String name) {
+    public AddonContexts withName(String name) {
         this.name = name;
         return this;
     }

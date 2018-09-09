@@ -6,34 +6,34 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BuildBuilder {
+public class Builds {
 
     @SuppressWarnings("WeakerAccess")
     public static final List<String> IDS = Ids.IDS;
     public static final String ID = Ids.ID_FROM_IDS;
     public static final String NO_SUCH_BUILD_ID = Ids.ID_NOT_FROM_IDS;
-    public static final String ADDON_ID = ContextActionBuilder.ID;
-    public static final String NO_SUCH_ADDON_ID = ContextActionBuilder.NO_SUCH_ADDON_ID;
+    public static final String ADDON_ID = ContextActions.ID;
+    public static final String NO_SUCH_ADDON_ID = ContextActions.NO_SUCH_ADDON_ID;
 
 
     private List<String> ids = IDS;
-    private ActionBuilder actions = ContextActionBuilder.get();
+    private Actions actions = ContextActions.get();
 
-    public static BuildBuilder get() {
-        return new BuildBuilder();
+    public static Builds get() {
+        return new Builds();
     }
 
-    public BuildBuilder withId(String id) {
+    public Builds withId(String id) {
         return withIds(Collections.singletonList(id));
     }
 
     @SuppressWarnings("WeakerAccess")
-    public BuildBuilder withIds(List<String> ids) {
+    public Builds withIds(List<String> ids) {
         this.ids = ids;
         return this;
     }
 
-    public BuildBuilder withActions(ActionBuilder actions) {
+    public Builds withActions(Actions actions) {
         this.actions = actions;
         return this;
     }
@@ -42,7 +42,7 @@ public class BuildBuilder {
         return ids.stream().map(id -> new JenkinsBuild(actions.create(), id)).collect(Collectors.toList());
     }
 
-    public BuildBuilder withCount(int count) {
+    public Builds withCount(int count) {
         return withIds(Ids.exactCount(count));
     }
 

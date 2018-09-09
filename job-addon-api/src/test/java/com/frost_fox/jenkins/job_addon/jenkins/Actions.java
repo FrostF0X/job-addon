@@ -4,7 +4,7 @@ import hudson.model.Action;
 
 import java.util.List;
 
-public interface ActionBuilder {
+public interface Actions {
 
     List<Action> create();
 

@@ -5,8 +5,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.frost_fox.jenkins.job_addon.addon.description.BuildDescriptionBuilder.ID;
-import static com.frost_fox.jenkins.job_addon.addon.description.BuildDescriptionBuilder.NO_SUCH_BUILD_ID;
+import static com.frost_fox.jenkins.job_addon.addon.description.BuildDescriptions.ID;
+import static com.frost_fox.jenkins.job_addon.addon.description.BuildDescriptions.NO_SUCH_BUILD_ID;
 import static org.junit.Assert.assertEquals;
 
 public class BuildDescriptionTest {
@@ -16,7 +16,7 @@ public class BuildDescriptionTest {
 
     @Test
     public void returnsAddonExecutionIfAddonExists() throws Exception {
-        BuildDescription description = BuildDescriptionBuilder.get().single();
+        BuildDescription description = BuildDescriptions.get().single();
 
         AddonExecution addonExecution = description.getAddonById(ID);
 
@@ -25,7 +25,7 @@ public class BuildDescriptionTest {
 
     @Test
     public void returnsNoSuchAddonExceptionIfAddonNotExists() throws Exception {
-        BuildDescription description = BuildDescriptionBuilder.get().single();
+        BuildDescription description = BuildDescriptions.get().single();
 
         exception.expect(NoSuchAddon.class);
 

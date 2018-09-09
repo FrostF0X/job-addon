@@ -1,17 +1,17 @@
 package com.frost_fox.jenkins.job_addon.jenkins;
 
-import com.frost_fox.jenkins.job_addon.addon.AddonContextBuilder;
+import com.frost_fox.jenkins.job_addon.addon.AddonContexts;
 import hudson.model.Action;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FakeActions implements ActionBuilder {
+public class FakeActions implements Actions {
 
     @SuppressWarnings("WeakerAccess")
-    public static final List<String> IDS = AddonContextBuilder.IDS;
-    public static final String ID = AddonContextBuilder.ID;
-    public static final String NO_SUCH_ADDON_ID = AddonContextBuilder.NO_SUCH_ADDON_ID;
+    public static final List<String> IDS = AddonContexts.IDS;
+    public static final String ID = AddonContexts.ID;
+    public static final String NO_SUCH_ADDON_ID = AddonContexts.NO_SUCH_ADDON_ID;
 
     private List<String> ids = IDS;
 

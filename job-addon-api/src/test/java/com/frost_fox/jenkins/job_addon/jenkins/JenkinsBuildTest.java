@@ -1,7 +1,7 @@
 package com.frost_fox.jenkins.job_addon.jenkins;
 
 import com.frost_fox.jenkins.job_addon.AddonContextAction;
-import com.frost_fox.jenkins.job_addon.addon.AddonContextBuilder;
+import com.frost_fox.jenkins.job_addon.addon.AddonContexts;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,22 +12,20 @@ public class JenkinsBuildTest {
 
     @Test
     public void returnsAllAddonActionsTakenFromAddonContextActions() {
-        JenkinsBuild build =
-                BuildBuilder.get().withActions(ContextActionBuilder.get().forContexts(AddonContextBuilder.get())).single();
+        JenkinsBuild build = Builds.get().withActions(ContextActions.get().forContexts(AddonContexts.get())).single();
 
         List<AddonContextAction> extractedAddons = build.getAddonActions();
 
-        assertThat(extractedAddons).isEqualTo(ContextActionBuilder.get().forContexts(AddonContextBuilder.get()).create());
+        assertThat(extractedAddons).isEqualTo(ContextActions.get().forContexts(AddonContexts.get()).create());
     }
 
     @Test
     public void returnsOnlyAddonActionsFromAllActions() {
-        JenkinsBuild build =
-                BuildBuilder.get().withActions(ContextActionBuilder.get()
-                        .forContexts(AddonContextBuilder.get()).and(FakeActions.get())).single();
+        JenkinsBuild build = Builds.get().withActions(ContextActions.get()
+                        .forContexts(AddonContexts.get()).and(FakeActions.get())).single();
 
         List<AddonContextAction> extractedAddons = build.getAddonActions();
 
-        assertThat(extractedAddons).isEqualTo(ContextActionBuilder.get().forContexts(AddonContextBuilder.get()).create());
+        assertThat(extractedAddons).isEqualTo(ContextActions.get().forContexts(AddonContexts.get()).create());
     }
 }

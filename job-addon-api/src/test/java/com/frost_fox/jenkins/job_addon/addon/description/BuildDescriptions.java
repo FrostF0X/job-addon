@@ -6,33 +6,33 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BuildDescriptionBuilder {
+public class BuildDescriptions {
 
     @SuppressWarnings("WeakerAccess")
     public static final List<String> IDS = Ids.IDS;
     public static final String ID = Ids.ID_FROM_IDS;
     public static final String NO_SUCH_BUILD_ID = Ids.ID_NOT_FROM_IDS;
-    public static final String ADDON_ID = AddonExecutionBuilder.ID;
-    public static final String NO_SUCH_ADDON_ID = AddonExecutionBuilder.NO_SUCH_ADDON_ID;
+    public static final String ADDON_ID = AddonExecutions.ID;
+    public static final String NO_SUCH_ADDON_ID = AddonExecutions.NO_SUCH_ADDON_ID;
 
-    private AddonExecutionBuilder addonExecutions = AddonExecutionBuilder.get();
+    private AddonExecutions addonExecutions = AddonExecutions.get();
     private List<String> ids = IDS;
 
-    public static BuildDescriptionBuilder get() {
-        return new BuildDescriptionBuilder();
+    public static BuildDescriptions get() {
+        return new BuildDescriptions();
     }
 
-    public BuildDescriptionBuilder withIds(List<String> ids) {
+    public BuildDescriptions withIds(List<String> ids) {
         this.ids = ids;
         return this;
     }
 
-    public BuildDescriptionBuilder withId(String id) {
+    public BuildDescriptions withId(String id) {
         this.ids = Collections.singletonList(id);
         return this;
     }
 
-    public BuildDescriptionBuilder withExecutions(AddonExecutionBuilder addonExecutions) {
+    public BuildDescriptions withExecutions(AddonExecutions addonExecutions) {
         this.addonExecutions = addonExecutions;
         return this;
     }

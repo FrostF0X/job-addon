@@ -5,9 +5,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionBuilder.ADDON_ID;
-import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionBuilder.BUILD_ID;
-import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionBuilder.NO_SUCH_BUILD_ID;
+import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptions.ADDON_ID;
+import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptions.BUILD_ID;
+import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptions.NO_SUCH_BUILD_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JobDescriptionTest {
@@ -17,7 +17,7 @@ public class JobDescriptionTest {
 
     @Test
     public void returnsAddonByBuildIdAndJobIdIfSuchExists() throws Exception {
-        JobDescription descriptionWithBuildsWithIds = JobDescriptionBuilder.get().create();
+        JobDescription descriptionWithBuildsWithIds = JobDescriptions.get().create();
 
         AddonExecution addon = descriptionWithBuildsWithIds.getAddonByBuildIdAndJobId(BUILD_ID, ADDON_ID);
 
@@ -26,7 +26,7 @@ public class JobDescriptionTest {
 
     @Test
     public void throwsExceptionIfSuchBuildIdNotExists() throws Exception {
-        JobDescription descriptionWithBuildsWithIds = JobDescriptionBuilder.get().create();
+        JobDescription descriptionWithBuildsWithIds = JobDescriptions.get().create();
 
         exception.expect(NoSuchBuild.class);
 
