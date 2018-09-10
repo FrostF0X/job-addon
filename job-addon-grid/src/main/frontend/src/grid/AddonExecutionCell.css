@@ -1,0 +1,27 @@
+.job-grid-addon-execution-cell-background {
+    background: rgba(0, 255, 0, 0.1);
+    padding: 1px;
+    position: relative;
+}
+
+.job-grid-addon-execution-cell {
+    min-height: 5.8em;
+    min-width: 124px;
+    border: solid 1px #d7d7d7;
+    border-radius: 4px;
+    display: flex;
+}
+
+.job-grid-addon-execution-content {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.job-grid-addon-execution-cell:hover {
+    margin: 0;
+    border: solid 1px #d7d7d7;
+    box-shadow: inset 0 -10px 100px -20px #ffffff, inset #d7d7d7 0 0 0 1px;
+}

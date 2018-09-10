@@ -1,0 +1,25 @@
+.job-addon-grid-btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.job-addon-grid-btn-sm {
+    padding: 5px 10px;
+    font-size: 12px;
+    line-height: 1.5;
+    border-radius: 3px;
+}
+
+.job-addon-grid-btn-start {
+    color: black;
+    background-color: #b2bbc3;
+    border-color: #74797d;
+    width: 6.7em;
+}
