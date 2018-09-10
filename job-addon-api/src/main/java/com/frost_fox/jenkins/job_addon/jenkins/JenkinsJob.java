@@ -2,6 +2,7 @@ package com.frost_fox.jenkins.job_addon.jenkins;
 
 import hudson.model.Job;
 import hudson.model.Run;
+import jenkins.model.Jenkins;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,7 +22,7 @@ public class JenkinsJob {
 
     public static JenkinsJob from(Job job) {
         return new JenkinsJob(((List<Run>) job.getBuilds()).stream().map(JenkinsBuild::new)
-                .collect(Collectors.toList()), job.getUrl());
+                .collect(Collectors.toList()), Jenkins.getInstance().getRootUrl() + job.getUrl());
     }
 
     public static JenkinsJob from(List<JenkinsBuild> builds, String url) {
