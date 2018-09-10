@@ -10,6 +10,16 @@ public class Result<T> {
         this.item = item;
     }
 
+    @SuppressWarnings("unused")
+    public boolean isSuccess() {
+        return success;
+    }
+
+    @SuppressWarnings("unused")
+    public T getItem() {
+        return item;
+    }
+
     public static <E> Result<E> failedWith(E item) {
         return new Result<>(false, item);
     }
