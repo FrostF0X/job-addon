@@ -4,9 +4,11 @@ export default class AddonExecution {
 
     /**
      * @param {Addon} addon
+     * @param {string} url
      */
-    constructor(addon) {
+    constructor(addon, url) {
         this.addon = addon;
+        this.url = url;
     }
 
     /**
@@ -14,7 +16,7 @@ export default class AddonExecution {
      * @returns {AddonExecution}
      */
     static fromObject(object){
-        return new this(new Addon(object.addon));
+        return new this(new Addon(object.addon), object.url);
     }
 
     /**
@@ -28,15 +30,18 @@ export default class AddonExecution {
         return this.addon.getName();
     }
 
+    getId() {
+        return this.addon.getId();
+    }
+
+    getUrl() {
+        return this.url;
+    }
     /**
      * @param addon
      * @returns {*}
      */
     ofThat(addon) {
         return this.getAddon().equals(addon);
-    }
-
-    getId() {
-        return this.addon.getId();
     }
 }

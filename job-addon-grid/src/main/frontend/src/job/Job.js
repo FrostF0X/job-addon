@@ -16,6 +16,9 @@ export default class Job {
         return new Job(Specification.default(), []);
     }
 
+    /**
+     * @returns {Execution[]}
+     */
     getExecutions() {
         return this.executions;
     }

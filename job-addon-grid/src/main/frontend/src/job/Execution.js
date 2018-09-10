@@ -19,10 +19,11 @@ export default class Execution {
 
     /**
      * @param {Specification} specification
+     * @return {Execution}
      */
     getAddonExecutionsBySpecification(specification) {
         return specification.getAddons().map(addon => {
-            return this.getAddonExecutionByAddon(addon) || new EmptyAddonExecution(addon);
+            return this.getAddonExecutionByAddon(addon) || new EmptyAddonExecution();
         });
     }
 

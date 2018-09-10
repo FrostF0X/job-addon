@@ -13,7 +13,6 @@ export default class Specification {
      * @param {Execution[]} executions
      */
     static fromExecutions(executions) {
-        console.log(executions);
         const addons = new Addons();
         executions.forEach(execution => {
                 execution.getAddonExecutions().forEach(
