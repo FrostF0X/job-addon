@@ -7,11 +7,6 @@ import java.util.concurrent.ExecutionException;
 
 public class JenkinsAddonExecutionManager implements AddonExecutionManager {
 
-    private String jobId;
-
-    public JenkinsAddonExecutionManager() {
-    }
-
     @SuppressWarnings("ConstantConditions")
     @Override
     public String startAndGetId(String jobId) throws AddonExecutionException{

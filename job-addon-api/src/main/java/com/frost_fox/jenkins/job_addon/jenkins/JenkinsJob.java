@@ -5,6 +5,7 @@ import hudson.model.Run;
 import jenkins.model.Jenkins;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @SuppressWarnings("unchecked")
@@ -21,8 +22,18 @@ public class JenkinsJob {
     }
 
     public static JenkinsJob from(Job job) {
-        return new JenkinsJob(((List<Run>) job.getBuilds()).stream().map(JenkinsBuild::new)
-                .collect(Collectors.toList()), Jenkins.getInstance().getRootUrl() + job.getUrl());
+        List<JenkinsBuild> builds = ((List<Run>) job.getBuilds()).stream().map(JenkinsBuild::new)
+                .collect(Collectors.toList());
+        String url = getUrl(job);
+        return new JenkinsJob(builds, url);
+    }
+
+    private static String getUrl(Job job) {
+        Jenkins jenkins = Jenkins.getInstance();
+        if(jenkins == null){
+            throw new RuntimeException("Jenkins is not defined");
+        }
+        return jenkins.getRootUrl() + job.getUrl();
     }
 
     public static JenkinsJob from(List<JenkinsBuild> builds, String url) {
