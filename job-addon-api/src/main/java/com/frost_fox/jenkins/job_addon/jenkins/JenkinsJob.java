@@ -11,18 +11,21 @@ public class JenkinsJob {
 
     public static final int MAX_JOBS = 10;
     private List<JenkinsBuild> builds;
-
-    public static JenkinsJob from(Job job) {
-        return new JenkinsJob(((List<Run>) job.getBuilds()).stream().map(JenkinsBuild::new).collect(Collectors.toList()));
-    }
-
-    public static JenkinsJob from(List<JenkinsBuild> builds) {
-        return new JenkinsJob(builds);
-    }
+    private String url;
 
     @SuppressWarnings("WeakerAccess")
-    public JenkinsJob(List<JenkinsBuild> builds) {
+    public JenkinsJob(List<JenkinsBuild> builds, String url) {
         this.builds = getLast(builds);
+        this.url = url;
+    }
+
+    public static JenkinsJob from(Job job) {
+        return new JenkinsJob(((List<Run>) job.getBuilds()).stream().map(JenkinsBuild::new)
+                .collect(Collectors.toList()), job.getUrl());
+    }
+
+    public static JenkinsJob from(List<JenkinsBuild> builds, String url) {
+        return new JenkinsJob(builds, url);
     }
 
     private List<JenkinsBuild> getLast(List<JenkinsBuild> builds) {
@@ -34,5 +37,9 @@ public class JenkinsJob {
 
     public List<JenkinsBuild> getBuilds() {
         return builds;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }

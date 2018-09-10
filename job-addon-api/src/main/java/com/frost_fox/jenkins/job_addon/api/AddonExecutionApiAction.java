@@ -12,6 +12,9 @@ import org.kohsuke.stapler.QueryParameter;
 
 public class AddonExecutionApiAction implements UnprotectedRootAction {
 
+    public static final String URL_SEGMENT = "addon-execution";
+    public static final String JOB_ID = "job";
+    public static final String BUILD_ID = "build";
     private final AddonRepository repository;
     private final AddonExecuteUseCase executeUseCase;
     private WorkflowJob job;
@@ -35,12 +38,12 @@ public class AddonExecutionApiAction implements UnprotectedRootAction {
 
     @Override
     public String getUrlName() {
-        return "addon-execution";
+        return URL_SEGMENT;
     }
 
     @ServeJson
-    public Object doIndex(@QueryParameter(required = true, value = "job") String jobId,
-                          @QueryParameter(required = true, value = "build") String buildId) {
+    public Object doIndex(@QueryParameter(required = true, value = JOB_ID) String jobId,
+                          @QueryParameter(required = true, value = BUILD_ID) String buildId) {
         return executeUseCase.execute(jobId, buildId, JenkinsJob.from(job));
     }
 }

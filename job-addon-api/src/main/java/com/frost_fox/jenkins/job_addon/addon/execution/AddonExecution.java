@@ -1,6 +1,7 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frost_fox.jenkins.job_addon.AddonContext;
 import com.frost_fox.jenkins.job_addon.addon.Addon;
 
@@ -8,13 +9,15 @@ import java.util.Objects;
 
 public class AddonExecution {
     public final Addon addon;
+    private AddonExecutionUrl url;
     private AddonExecutionManager executionManager;
     private AddonContext context;
 
-    public AddonExecution(AddonContext context, AddonExecutionManager executionManager) {
+    public AddonExecution(AddonContext context, AddonExecutionUrl url, AddonExecutionManager executionManager) {
         this.context = context;
-        addon = new Addon(context);
+        this.url = url;
         this.executionManager = executionManager;
+        addon = new Addon(context);
     }
 
     public Addon getAddon() {
@@ -25,14 +28,24 @@ public class AddonExecution {
         return this.context.getLastRunId();
     }
 
-    @SuppressWarnings("WeakerAccess")
-    public void setLastExecutionId(String id) {
-        this.context.setLastRunId(id);
+    @JsonIgnore
+    public AddonExecutionUrl getUrl() {
+        return url;
+    }
+
+    @JsonProperty("url")
+    public String getUrlString() {
+        return url.toString();
     }
 
     @JsonIgnore
     public String getId() {
         return getAddon().getId();
+    }
+
+    @SuppressWarnings("WeakerAccess")
+    public void setLastExecutionId(String id) {
+        this.context.setLastRunId(id);
     }
 
     public void start() throws AddonExecutionException {

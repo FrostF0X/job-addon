@@ -11,7 +11,7 @@ public class AddonContexts {
 
     public static final String NAME = "name";
     public static final List<String> IDS = Ids.IDS;
-    public static final String ID = Ids.ID_FROM_IDS;
+    public static final String ID = Ids.FIRST_ID_FROM_IDS;
     public static final String NO_SUCH_ADDON_ID = Ids.ID_NOT_FROM_IDS;
 
     private List<String> ids = IDS;

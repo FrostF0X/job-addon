@@ -10,7 +10,7 @@ public class BuildDescriptions {
 
     @SuppressWarnings("WeakerAccess")
     public static final List<String> IDS = Ids.IDS;
-    public static final String ID = Ids.ID_FROM_IDS;
+    public static final String ID = Ids.FIRST_ID_FROM_IDS;
     public static final String NO_SUCH_BUILD_ID = Ids.ID_NOT_FROM_IDS;
     public static final String ADDON_ID = AddonExecutions.ID;
     public static final String NO_SUCH_ADDON_ID = AddonExecutions.NO_SUCH_ADDON_ID;

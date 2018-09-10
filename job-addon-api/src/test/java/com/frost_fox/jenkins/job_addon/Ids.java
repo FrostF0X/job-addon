@@ -10,7 +10,7 @@ public class Ids {
     public static final List<String> IDS = Arrays.asList("1", "2", "3");
     public static final List<String> IDS2 = Arrays.asList("15", "17", "19");
     public static final String ID_FROM_IDS2 = "15";
-    public static final String ID_FROM_IDS = "1";
+    public static final String FIRST_ID_FROM_IDS = "1";
     public static final String ID_NOT_FROM_IDS = "10";
 
     public static final String ID = "some id";

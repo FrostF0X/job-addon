@@ -96,9 +96,8 @@ public class AddonExecuteUseCaseTest {
 
     @Before
     public void setUp() {
-        factory = new JobDescriptionFactory(executionManager);
+        factory = new JobDescriptionFactory(new AddonExecutionFactory(executionManager));
         useCase = new AddonExecuteUseCase(addonRepository, factory);
     }
-
 
 }
