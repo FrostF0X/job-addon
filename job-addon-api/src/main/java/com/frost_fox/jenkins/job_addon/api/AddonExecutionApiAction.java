@@ -44,6 +44,6 @@ public class AddonExecutionApiAction implements UnprotectedRootAction {
     @ServeJson
     public Object doIndex(@QueryParameter(required = true, value = JOB_ID) String jobId,
                           @QueryParameter(required = true, value = BUILD_ID) String buildId) {
-        return executeUseCase.execute(jobId, buildId, JenkinsJob.from(job));
+        return executeUseCase.execute(buildId, jobId, JenkinsJob.from(job));
     }
 }
