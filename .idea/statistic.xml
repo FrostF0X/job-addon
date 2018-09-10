@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Statistic">
+    <option name="excludedDirectories">
+      <list>
+        <option value="$PROJECT_DIR$/job-addon-api/work" />
+        <option value="$PROJECT_DIR$/job-addon-api/target" />
+        <option value="$PROJECT_DIR$/job-addon-grid/work" />
+        <option value="$PROJECT_DIR$/job-addon-grid/target" />
+        <option value="$PROJECT_DIR$/job-addon-grid/src/main/frontend/scripts" />
+        <option value="$PROJECT_DIR$/job-addon-grid/src/main/frontend/public" />
+        <option value="$PROJECT_DIR$/job-addon-grid/src/main/frontend/node_modules" />
+        <option value="$PROJECT_DIR$/job-addon-grid/src/main/frontend/config" />
+        <option value="$PROJECT_DIR$/job-addon-grid/src/main/frontend/build" />
+      </list>
+    </option>
+  </component>
+</project>
