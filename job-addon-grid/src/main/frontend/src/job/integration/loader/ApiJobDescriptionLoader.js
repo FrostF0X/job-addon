@@ -1,5 +1,5 @@
 import JobFactory from "./JobFactory";
-import Job from "../Job";
+import Job from "../../Job";
 
 export default class ApiJobDescriptionLoader {
 

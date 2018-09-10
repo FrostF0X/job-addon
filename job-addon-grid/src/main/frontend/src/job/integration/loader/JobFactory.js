@@ -1,7 +1,7 @@
-import Execution from "../Execution";
-import Specification from "../Specification";
-import AddonExecution from "../AddonExecution";
-import Job from "../Job";
+import Execution from "../../Execution";
+import Specification from "../../Specification";
+import AddonExecution from "../../AddonExecution";
+import Job from "../../Job";
 
 export default class JobFactory {
     static fromResponse(response) {

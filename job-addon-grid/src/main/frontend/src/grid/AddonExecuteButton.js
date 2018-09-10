@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from "prop-types";
 import AddonExecution from "../job/AddonExecution";
 import "./AddonExecuteButton.css";
+import AddonExecutor from "../job/integration/executor/AddonExecutor";
 
 export default class AddonExecuteButton extends Component {
     constructor(props) {
@@ -20,8 +21,12 @@ export default class AddonExecuteButton extends Component {
     }
 
     execute() {
-        console.log(this.props.addonExecution.getUrl());
+        this.context.executor.execute(this.props.addonExecution.getUrl());
     }
+
+    static contextTypes = {
+        executor: PropTypes.instanceOf(AddonExecutor)
+    };
 
     static propTypes = {
         addonExecution: PropTypes.instanceOf(AddonExecution)
