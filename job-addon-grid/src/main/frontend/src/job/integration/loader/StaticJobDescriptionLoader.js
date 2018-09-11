@@ -7,12 +7,14 @@ export default class StaticJobDescriptionLoader {
                 "addon": {
                     "name": "Deploy staging",
                     "id": "deploy-stage",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }, {
                 "addon": {
                     "name": "Deploy staging",
                     "id": "deploy-prod",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }], "id": "4"
@@ -21,12 +23,14 @@ export default class StaticJobDescriptionLoader {
                 "addon": {
                     "name": "Deploy staging",
                     "id": "deploy-stage",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }, {
                 "addon": {
                     "name": "Deploy staging",
                     "id": "deploy-prod",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }], "id": "3"
@@ -35,12 +39,14 @@ export default class StaticJobDescriptionLoader {
                 "addon": {
                     "name": "Deploy staging",
                     "id": "deploy-stage",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }, {
                 "addon": {
                     "name": "Deploy staging",
                     "id": "deploy-prod",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }], "id": "2"
@@ -49,6 +55,7 @@ export default class StaticJobDescriptionLoader {
                 "addon": {
                     "name": "Old stage",
                     "id": "old-deploy-stage",
+                    "estimation": 2113
                 },
                 "url": "http://localhost:3000/test"
             }], "id": "1"

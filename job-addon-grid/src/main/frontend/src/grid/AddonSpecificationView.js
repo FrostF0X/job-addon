@@ -9,7 +9,7 @@ export default class AddonSpecificationView extends Component {
                     {this.props.addon.getName()}
                 </div>
                 <div className="job-grid-addon-specification-estimation">
-                    <h5 className="job-grid-addon-specification-estimation-label">20ms</h5>
+                    <h5 className="job-grid-addon-specification-estimation-label">{this.props.addon.getEstimation()} ms</h5>
                 </div>
             </th>
         );

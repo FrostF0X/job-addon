@@ -20,6 +20,13 @@ export default class Addon {
     }
 
     /**
+     * @returns {int}
+     */
+    getEstimation(){
+        return this.estimation;
+    }
+
+    /**
      * @param comparable
      * @returns {boolean}
      */
