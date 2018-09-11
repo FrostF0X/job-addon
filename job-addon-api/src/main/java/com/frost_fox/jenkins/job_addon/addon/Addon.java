@@ -7,9 +7,11 @@ import java.util.Objects;
 public class Addon {
 
     private AddonContext context;
+    private long estimation;
 
-    public Addon(AddonContext context) {
+    public Addon(AddonContext context, long estimation) {
         this.context = context;
+        this.estimation = estimation;
     }
 
     public String getName() {
@@ -18,6 +20,10 @@ public class Addon {
 
     public String getId() {
         return context.getId();
+    }
+
+    public long getEstimation() {
+        return estimation;
     }
 
     @Override

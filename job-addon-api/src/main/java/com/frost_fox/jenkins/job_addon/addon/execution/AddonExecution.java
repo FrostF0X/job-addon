@@ -13,11 +13,12 @@ public class AddonExecution {
     private AddonExecutionManager executionManager;
     private AddonContext context;
 
-    public AddonExecution(AddonContext context, AddonExecutionUrl url, AddonExecutionManager executionManager) {
+    public AddonExecution(AddonContext context, AddonExecutionUrl url, AddonExecutionManager executionManager,
+                          long estimation) {
         this.context = context;
         this.url = url;
         this.executionManager = executionManager;
-        addon = new Addon(context);
+        addon = new Addon(context, estimation);
     }
 
     public Addon getAddon() {

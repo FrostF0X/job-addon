@@ -7,6 +7,7 @@ import com.frost_fox.jenkins.job_addon.addon.AddonRepositoryException;
 import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
 import com.frost_fox.jenkins.job_addon.addon.description.NoSuchAddon;
 import com.frost_fox.jenkins.job_addon.addon.description.NoSuchBuild;
+import com.frost_fox.jenkins.job_addon.jenkins.FakeJenkinsJobRepository;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
 import com.frost_fox.jenkins.job_addon.jenkins.Jobs;
 import org.junit.Before;
@@ -96,7 +97,7 @@ public class AddonExecuteUseCaseTest {
 
     @Before
     public void setUp() {
-        factory = new JobDescriptionFactory(new AddonExecutionFactory(executionManager));
+        factory = new JobDescriptionFactory(new AddonExecutionFactory(executionManager, new FakeJenkinsJobRepository()));
         useCase = new AddonExecuteUseCase(addonRepository, factory);
     }
 

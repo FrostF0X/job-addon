@@ -15,7 +15,7 @@ export default class AddonExecution {
      * @param {object} object
      * @returns {AddonExecution}
      */
-    static fromObject(object){
+    static fromObject(object) {
         return new this(new Addon(object.addon), object.url);
     }
 
@@ -37,6 +37,7 @@ export default class AddonExecution {
     getUrl() {
         return this.url;
     }
+
     /**
      * @param addon
      * @returns {*}

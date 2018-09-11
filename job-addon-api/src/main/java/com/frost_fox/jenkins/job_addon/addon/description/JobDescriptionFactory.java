@@ -1,14 +1,14 @@
 package com.frost_fox.jenkins.job_addon.addon.description;
 
+import com.frost_fox.jenkins.job_addon.AddonContext;
 import com.frost_fox.jenkins.job_addon.AddonContextAction;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutionFactory;
 import com.frost_fox.jenkins.job_addon.addon.execution.JenkinsAddonExecutionManager;
-import com.frost_fox.jenkins.job_addon.jenkins.JenkinsBuild;
-import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
+import com.frost_fox.jenkins.job_addon.jenkins.*;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class JobDescriptionFactory {
 
@@ -19,17 +19,30 @@ public class JobDescriptionFactory {
     }
 
     public static JobDescriptionFactory get() {
-        return new JobDescriptionFactory(new AddonExecutionFactory(new JenkinsAddonExecutionManager()));
+        JenkinsJobRepository repository = new XStreamJenkinsJobRepository();
+        return new JobDescriptionFactory(
+                new AddonExecutionFactory(new JenkinsAddonExecutionManager(repository), repository)
+        );
     }
 
-    public JobDescription create(JenkinsJob job) {
-        return new JobDescription(job.getBuilds().stream().map(build -> createDescription(job, build))
-                .collect(Collectors.toList()), job.getEstimation());
+    public JobDescription create(JenkinsJob job) throws NoSuchJob {
+        List<BuildDescription> list = new ArrayList<>();
+        for (JenkinsBuild build : job.getBuilds()) {
+            BuildDescription description = createDescription(job, build);
+            list.add(description);
+        }
+        return new JobDescription(list, job.getEstimation());
     }
 
-    private BuildDescription createDescription(JenkinsJob job, JenkinsBuild build) {
-        List<AddonExecution> executions = build.getAddonActions().stream().map(AddonContextAction::getContext)
-                .map(context -> executionFactory.create(job, build, context)).collect(Collectors.toList());
+    private BuildDescription createDescription(JenkinsJob job, JenkinsBuild build) throws NoSuchJob {
+        List<AddonExecution> executions = new ArrayList<>();
+
+        for (AddonContextAction addonContextAction : build.getAddonActions()) {
+            AddonContext context = addonContextAction.getContext();
+            AddonExecution execution = executionFactory.create(job, build, context);
+            executions.add(execution);
+        }
+
         return new BuildDescription(executions, build.getId());
     }
 

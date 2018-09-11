@@ -2,6 +2,7 @@ export default class Addon {
     constructor(info) {
         this.name = info.name;
         this.id = info.id;
+        this.estimation = info.estimation;
     }
 
     /**
