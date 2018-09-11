@@ -24,7 +24,7 @@ public class JobDescriptionFactory {
 
     public JobDescription create(JenkinsJob job) {
         return new JobDescription(job.getBuilds().stream().map(build -> createDescription(job, build))
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList()), job.getEstimation());
     }
 
     private BuildDescription createDescription(JenkinsJob job, JenkinsBuild build) {

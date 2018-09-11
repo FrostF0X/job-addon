@@ -2,12 +2,15 @@ package com.frost_fox.jenkins.job_addon.addon.description;
 
 public class JobDescriptions {
 
-    public static String BUILD_ID = BuildDescriptions.ID;
-    public static String NO_SUCH_BUILD_ID = BuildDescriptions.NO_SUCH_BUILD_ID;
-    public static String ADDON_ID = BuildDescriptions.ADDON_ID;
-    public static String NO_SUCH_ADDON_ID = BuildDescriptions.NO_SUCH_ADDON_ID;
+    public static final String BUILD_ID = BuildDescriptions.ID;
+    public static final String NO_SUCH_BUILD_ID = BuildDescriptions.NO_SUCH_BUILD_ID;
+    public static final String ADDON_ID = BuildDescriptions.ADDON_ID;
+    public static final String NO_SUCH_ADDON_ID = BuildDescriptions.NO_SUCH_ADDON_ID;
+    @SuppressWarnings("WeakerAccess")
+    public static final int ESTIMATION = 1000;
 
     private BuildDescriptions builds = BuildDescriptions.get();
+    private long estimation = ESTIMATION;
 
     public static JobDescriptions get() {
         return new JobDescriptions();
@@ -23,7 +26,7 @@ public class JobDescriptions {
     }
 
     public JobDescription all() {
-        return new JobDescription(builds.all());
+        return new JobDescription(builds.all(), estimation);
     }
 
 }

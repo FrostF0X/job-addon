@@ -8,14 +8,20 @@ import java.util.Objects;
 public class JobDescription {
 
     private List<BuildDescription> buildDescriptions;
+    private long estimation;
 
-    public JobDescription(List<BuildDescription> buildDescriptions) {
+    public JobDescription(List<BuildDescription> buildDescriptions, long estimation) {
         this.buildDescriptions = buildDescriptions;
+        this.estimation = estimation;
     }
 
     @SuppressWarnings("WeakerAccess")
     public List<BuildDescription> getBuildDescriptions() {
         return buildDescriptions;
+    }
+
+    public long getEstimation() {
+        return estimation;
     }
 
     @Override
