@@ -1,9 +1,10 @@
-package com.frost_fox.jenkins.job_addon.addon.description;
+package com.frost_fox.jenkins.job_addon.description;
 
 import com.frost_fox.jenkins.job_addon.AddonContext;
 import com.frost_fox.jenkins.job_addon.addon.AddonContexts;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutionUrls;
+import com.frost_fox.jenkins.job_addon.addon.execution.FakeAddonExecutionManager;
 
 import java.util.List;
 import java.util.stream.Collectors;

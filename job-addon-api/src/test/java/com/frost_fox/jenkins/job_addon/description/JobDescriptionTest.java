@@ -1,13 +1,13 @@
-package com.frost_fox.jenkins.job_addon.addon.description;
+package com.frost_fox.jenkins.job_addon.description;
 
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptions.ADDON_ID;
-import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptions.BUILD_ID;
-import static com.frost_fox.jenkins.job_addon.addon.description.JobDescriptions.NO_SUCH_BUILD_ID;
+import static com.frost_fox.jenkins.job_addon.description.JobDescriptions.ADDON_ID;
+import static com.frost_fox.jenkins.job_addon.description.JobDescriptions.BUILD_ID;
+import static com.frost_fox.jenkins.job_addon.description.JobDescriptions.NO_SUCH_BUILD_ID;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JobDescriptionTest {

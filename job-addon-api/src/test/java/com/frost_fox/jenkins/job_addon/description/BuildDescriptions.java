@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.job_addon.addon.description;
+package com.frost_fox.jenkins.job_addon.description;
 
 import com.frost_fox.jenkins.job_addon.Ids;
 

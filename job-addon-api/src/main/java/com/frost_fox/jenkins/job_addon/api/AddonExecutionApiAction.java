@@ -3,7 +3,7 @@ package com.frost_fox.jenkins.job_addon.api;
 import com.cloudbees.workflow.util.ServeJson;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
 import com.frost_fox.jenkins.job_addon.addon.XStreamAddonRepository;
-import com.frost_fox.jenkins.job_addon.addon.description.JobDescriptionFactory;
+import com.frost_fox.jenkins.job_addon.description.JobDescriptionFactory;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecuteUseCase;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
 import hudson.model.UnprotectedRootAction;

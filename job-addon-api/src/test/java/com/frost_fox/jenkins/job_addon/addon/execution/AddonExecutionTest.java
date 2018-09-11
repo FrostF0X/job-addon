@@ -1,6 +1,6 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
-import com.frost_fox.jenkins.job_addon.addon.description.AddonExecutions;
+import com.frost_fox.jenkins.job_addon.description.AddonExecutions;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

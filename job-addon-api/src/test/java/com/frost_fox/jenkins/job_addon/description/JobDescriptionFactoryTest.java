@@ -1,7 +1,8 @@
-package com.frost_fox.jenkins.job_addon.addon.description;
+package com.frost_fox.jenkins.job_addon.description;
 
 import com.frost_fox.jenkins.job_addon.addon.AddonContexts;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutionFactory;
+import com.frost_fox.jenkins.job_addon.addon.execution.FakeAddonExecutionManager;
 import com.frost_fox.jenkins.job_addon.jenkins.*;
 import org.junit.Test;
 
