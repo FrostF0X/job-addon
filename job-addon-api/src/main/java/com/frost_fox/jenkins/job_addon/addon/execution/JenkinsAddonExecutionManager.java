@@ -14,7 +14,6 @@ public class JenkinsAddonExecutionManager implements AddonExecutionManager {
         this.repository = repository;
     }
 
-    @SuppressWarnings("ConstantConditions")
     @Override
     public String startAndGetId(String jobId) throws AddonExecutionException {
         try {
@@ -22,7 +21,7 @@ public class JenkinsAddonExecutionManager implements AddonExecutionManager {
             return job.scheduleBuild2(0).waitForStart().getId();
         } catch (NoSuchJob e) {
             throw new AddonExecutionException(e.getMessage());
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (NullPointerException | InterruptedException | ExecutionException e) {
             throw new AddonExecutionException("Unable to wait until job started");
         } catch (Exception e) {
             throw new AddonExecutionException("Something went wrong during execution");
