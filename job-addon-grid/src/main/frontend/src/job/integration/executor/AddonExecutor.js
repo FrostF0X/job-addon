@@ -1,16 +1,24 @@
 import StaticAddonExecutor from "./StaticAddonExecutor";
+import ApiAddonExecutor from "./ApiAddonExecutor";
 
 export default class AddonExecutor {
     // noinspection JSUnusedLocalSymbols
+    /**
+     * @param {Environment} environment
+     */
     constructor(environment) {
-        this.executor = new StaticAddonExecutor();
+        if (environment.isProd()) {
+            this.executor = new ApiAddonExecutor();
+        } else {
+            this.executor = new StaticAddonExecutor();
+        }
     }
 
     /**
-     * @param url
-     * @returns {Result}
+     * @param {AddonExecution} addonExecution
+     * @returns {Promise<Result>}
      */
-    execute(url){
-        return this.executor.execute(url);
+    async execute(addonExecution) {
+        return await this.executor.execute(addonExecution);
     }
 }

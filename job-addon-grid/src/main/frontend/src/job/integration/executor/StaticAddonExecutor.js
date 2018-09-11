@@ -4,11 +4,11 @@ export default class StaticAddonExecutor {
 
     // noinspection JSMethodCanBeStatic
     /**
-     * @param url
-     * @returns {Result}
+     * @param {AddonExecution} addonExecution
+     * @returns {Promise<Result>}
      */
-    execute(url) {
-        return Result.successful("id");
+    async execute(addonExecution) {
+        return await Result.successful("id");
     }
 
 }

@@ -20,8 +20,9 @@ export default class AddonExecuteButton extends Component {
         )
     }
 
-    execute() {
-        this.context.executor.execute(this.props.addonExecution.getUrl());
+    async execute() {
+        // noinspection JSIgnoredPromiseFromCall
+        this.context.executor.execute(this.props.addonExecution);
     }
 
     static contextTypes = {
