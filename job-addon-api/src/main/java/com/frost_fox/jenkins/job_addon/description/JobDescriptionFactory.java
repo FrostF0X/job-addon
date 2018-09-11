@@ -18,13 +18,6 @@ public class JobDescriptionFactory {
         this.executionFactory = executionFactory;
     }
 
-    public static JobDescriptionFactory get() {
-        JenkinsJobRepository repository = new XStreamJenkinsJobRepository();
-        return new JobDescriptionFactory(
-                new AddonExecutionFactory(new JenkinsAddonExecutionManager(repository), repository)
-        );
-    }
-
     public JobDescription create(JenkinsJob job) throws NoSuchJob {
         List<BuildDescription> list = new ArrayList<>();
         for (JenkinsBuild build : job.getBuilds()) {

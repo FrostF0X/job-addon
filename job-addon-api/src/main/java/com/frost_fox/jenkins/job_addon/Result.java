@@ -4,10 +4,12 @@ public class Result<T> {
 
     private final boolean success;
     private final T item;
+    private final String cause;
 
-    private Result(boolean success, T item) {
+    private Result(boolean success, T item, String cause) {
         this.success = success;
         this.item = item;
+        this.cause = cause;
     }
 
     @SuppressWarnings("unused")
@@ -20,12 +22,17 @@ public class Result<T> {
         return item;
     }
 
-    public static <E> Result<E> failedWith(E item) {
-        return new Result<>(false, item);
+
+    public String getCause() {
+        return cause;
+    }
+
+    public static Result failedWith(String cause) {
+        return new Result<>(false, null, cause);
     }
 
     public static <E> Result<E> successfulWith(E item) {
-        return new Result<>(true, item);
+        return new Result<>(true, item, "");
     }
 
     public boolean successful() {

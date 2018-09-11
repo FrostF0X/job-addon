@@ -26,10 +26,10 @@ public class ResultAssert extends AbstractAssert<ResultAssert, Result<?>> {
     }
 
     @SuppressWarnings("UnusedReturnValue")
-    public ResultAssert failedWith(Object item) {
+    public ResultAssert failedWith(String cause) {
         isNotNull();
         failed();
-        with(item);
+        withCause(cause);
 
         return this;
     }
@@ -54,6 +54,12 @@ public class ResultAssert extends AbstractAssert<ResultAssert, Result<?>> {
         }
 
         return this;
+    }
+
+    private void withCause(String cause) {
+        if(!result.getCause().equals(cause)){
+            failWithMessage("Expected withCause to return <%s> but was <%s>", result.getCause(), cause);
+        }
     }
 
     private void with(Object item) {
