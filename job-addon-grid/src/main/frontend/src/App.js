@@ -20,13 +20,12 @@ export default class App extends Component {
         this.getChildContext = this.getChildContext.bind(this);
     }
 
-    createContext() {
-        this.appContext = {
-            environment: determineEnvironment(getEnvSettings()),
-        };
-        this.appContext.loader = new JobDescriptionLoader(this.appContext.environment, this.appContext.environment);
-        this.appContext.executor = new AddonExecutor(this.appContext.environment);
-    }
+    static childContextTypes = {
+        data: PropTypes.object,
+        env: PropTypes.instanceOf(Environment),
+        executor: PropTypes.instanceOf(AddonExecutor),
+        loader: PropTypes.instanceOf(JobDescriptionLoader)
+    };
 
     getChildContext() {
         return this.appContext;
@@ -43,10 +42,13 @@ export default class App extends Component {
         this.setState({job: job});
     }
 
-    static childContextTypes = {
-        environment: PropTypes.instanceOf(Environment),
-        executor: PropTypes.instanceOf(AddonExecutor),
-        loader: PropTypes.instanceOf(JobDescriptionLoader)
+    createContext() {
+        this.appContext = {
+            data: getEnvSettings(),
+        };
+        this.appContext.env = determineEnvironment(this.appContext.data);
+        this.appContext.loader = new JobDescriptionLoader(this.appContext.env, this.appContext.data);
+        this.appContext.executor = new AddonExecutor(this.appContext.env);
     }
 
 }
