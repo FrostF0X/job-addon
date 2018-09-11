@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.job_addon;
+package com.frost_fox.jenkins.job_addon.syntax;
 
 import org.jenkinsci.plugins.workflow.steps.StepContext;
 import org.jenkinsci.plugins.workflow.steps.SynchronousStepExecution;

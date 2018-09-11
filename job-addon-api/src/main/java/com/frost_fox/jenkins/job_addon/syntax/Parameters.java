@@ -1,4 +1,4 @@
-package com.frost_fox.jenkins.job_addon;
+package com.frost_fox.jenkins.job_addon.syntax;
 
 import hudson.model.Item;
 import hudson.model.Job;
@@ -22,7 +22,7 @@ public class Parameters {
             throw new RuntimeException("jenkins not found o_O (Jenkins.getInstance() returned null)");
         }
         Item item = jenkins.getItem(jobId);
-        if (item == null || !(item instanceof Job)) {
+        if (!(item instanceof Job)) {
             throw new RuntimeException("Job with such ID does not exists");
         }
         return (Job) item;

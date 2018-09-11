@@ -1,5 +1,6 @@
-package com.frost_fox.jenkins.job_addon;
+package com.frost_fox.jenkins.job_addon.syntax;
 
+import com.frost_fox.jenkins.job_addon.AddonContext;
 import hudson.Extension;
 import hudson.model.Job;
 import hudson.model.Run;

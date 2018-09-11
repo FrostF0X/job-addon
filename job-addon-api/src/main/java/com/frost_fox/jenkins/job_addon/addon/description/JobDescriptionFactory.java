@@ -1,7 +1,7 @@
 package com.frost_fox.jenkins.job_addon.addon.description;
 
 import com.frost_fox.jenkins.job_addon.AddonContext;
-import com.frost_fox.jenkins.job_addon.AddonContextAction;
+import com.frost_fox.jenkins.job_addon.syntax.AddonContextAction;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecution;
 import com.frost_fox.jenkins.job_addon.addon.execution.AddonExecutionFactory;
 import com.frost_fox.jenkins.job_addon.addon.execution.JenkinsAddonExecutionManager;

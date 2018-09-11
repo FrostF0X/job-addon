@@ -1,6 +1,6 @@
 package com.frost_fox.jenkins.job_addon.jenkins;
 
-import com.frost_fox.jenkins.job_addon.AddonContextAction;
+import com.frost_fox.jenkins.job_addon.syntax.AddonContextAction;
 import com.frost_fox.jenkins.job_addon.addon.AddonContexts;
 import hudson.model.Action;
 

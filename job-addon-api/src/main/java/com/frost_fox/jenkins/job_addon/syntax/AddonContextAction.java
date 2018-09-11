@@ -1,5 +1,6 @@
-package com.frost_fox.jenkins.job_addon;
+package com.frost_fox.jenkins.job_addon.syntax;
 
+import com.frost_fox.jenkins.job_addon.AddonContext;
 import hudson.model.InvisibleAction;
 
 import java.util.Objects;
