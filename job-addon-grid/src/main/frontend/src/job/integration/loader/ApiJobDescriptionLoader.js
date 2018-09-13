@@ -1,5 +1,5 @@
-import JobFactory from "./JobFactory";
-import Job from "../../Job";
+import Result from "../Result";
+import JobResult from "./JobResult";
 
 export default class ApiJobDescriptionLoader {
 
@@ -11,14 +11,14 @@ export default class ApiJobDescriptionLoader {
     }
 
     /**
-     * @returns {object}
+     * @returns {Promise<Result>}
      */
     async load() {
         try {
             const response = await fetch(this.url);
-            return JobFactory.fromResponse(await response.json());
+            return JobResult.create(await response.json());
         } catch (e){
-            return Job.default();
+            return Result.failed("Unexpected api error");
         }
     }
 }

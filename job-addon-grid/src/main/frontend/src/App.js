@@ -36,10 +36,14 @@ export default class App extends Component {
     }
 
     /**
-     * @param {Job} job
+     * @param {Result} result
      */
-    loaded(job) {
-        this.setState({job: job});
+    loaded(result) {
+        if(result.isSuccessful()) {
+            this.setState({job: result.get()});
+        } else {
+            console.log(result.getCause());
+        }
     }
 
     createContext() {

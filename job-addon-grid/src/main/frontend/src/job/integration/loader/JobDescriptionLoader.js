@@ -15,6 +15,9 @@ export default class JobDescriptionLoader {
         }
     }
 
+    /**
+     * @returns {Promise<Result>}
+     */
     async load() {
         return await this.loader.load();
     }
