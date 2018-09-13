@@ -32,6 +32,6 @@ public class XStreamBuildInfoRepository implements BuildInfoRepository {
         if (result == null){
             return false;
         }
-        return result.toString().equals("Success");
+        return result.toString().equals("SUCCESS");
     }
 }
