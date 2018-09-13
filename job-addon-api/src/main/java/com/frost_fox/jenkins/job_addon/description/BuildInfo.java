@@ -16,7 +16,7 @@ public class BuildInfo {
     }
 
     public static BuildInfo common() {
-        return new BuildInfo(BuildStatus.Running, 0);
+        return new BuildInfo(BuildStatus.Success, 0);
     }
 
     @JsonIgnore
