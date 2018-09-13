@@ -11,7 +11,6 @@ export default class JobResult {
         try {
             return this.createUnsafe(response);
         } catch (e) {
-            console.log(e);
             return Result.failed("Response mapping error");
         }
     }
