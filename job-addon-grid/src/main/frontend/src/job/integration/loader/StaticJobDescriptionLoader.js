@@ -37,8 +37,8 @@ export default class StaticJobDescriptionLoader {
                         "estimation": 2113
                     },
                     "lastBuildInfo": {
-                        "duration": 27,
-                        "status": "success"
+                        "duration": 1000,
+                        "status": "running"
                     },
                     "url": "http://localhost:3000/test"
                 }, {

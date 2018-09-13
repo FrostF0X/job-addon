@@ -1,5 +1,6 @@
 import Addon from "./Addon";
 import ExecutionInfo from "./ExecutionInfo";
+import Count from "../Count";
 
 export default class AddonExecution {
 
@@ -51,10 +52,25 @@ export default class AddonExecution {
     }
 
     /**
+     * @param {string} status
+     * @return {boolean}
+     */
+    hasStatus(status) {
+        return this.getExecutionInfo().getStatus() === status;
+    }
+
+    /**
      * @returns {ExecutionInfo}
      */
     getExecutionInfo() {
         return this.executionInfo;
+    }
+
+    /**
+     * @return {number}
+     */
+    getProgress() {
+        return Math.min(Count.inPercents(this.getExecutionInfo().getDuration() / this.getAddon().getEstimation()), 100);
     }
 
     /**
