@@ -46,6 +46,6 @@ public class AddonExecutions {
     }
 
     private AddonExecution createAddonExecution(AddonContext context) {
-        return new AddonExecution(context, urls.one(), executionManager, estimation);
+        return new AddonExecution(context, urls.one(), executionManager, estimation, BuildInfo.common());
     }
 }

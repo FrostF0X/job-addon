@@ -4,10 +4,10 @@ package com.frost_fox.jenkins.job_addon.addon.execution;
 import com.frost_fox.jenkins.job_addon.Result;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepository;
 import com.frost_fox.jenkins.job_addon.addon.AddonRepositoryException;
+import com.frost_fox.jenkins.job_addon.description.FakeJobDescriptionFactories;
 import com.frost_fox.jenkins.job_addon.description.JobDescriptionFactory;
 import com.frost_fox.jenkins.job_addon.description.NoSuchAddon;
 import com.frost_fox.jenkins.job_addon.description.NoSuchBuild;
-import com.frost_fox.jenkins.job_addon.jenkins.FakeJenkinsJobRepository;
 import com.frost_fox.jenkins.job_addon.jenkins.JenkinsJob;
 import com.frost_fox.jenkins.job_addon.jenkins.Jobs;
 import org.junit.Before;
@@ -97,7 +97,7 @@ public class AddonExecuteUseCaseTest {
 
     @Before
     public void setUp() {
-        factory = new JobDescriptionFactory(new AddonExecutionFactory(executionManager, new FakeJenkinsJobRepository()));
+        factory = FakeJobDescriptionFactories.get().withManager(executionManager).one();
         useCase = new AddonExecuteUseCase(addonRepository, factory);
     }
 

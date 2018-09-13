@@ -8,9 +8,13 @@ public class AddonContext {
     private String lastRunId;
 
     public AddonContext(String id, String name) {
+        this(id, name, "");
+    }
+
+    public AddonContext(String id, String name, String lastRunId) {
         this.name = name;
         this.id = id;
-        this.lastRunId = "";
+        this.lastRunId = lastRunId;
     }
 
     public String getName() {
@@ -25,7 +29,7 @@ public class AddonContext {
         return lastRunId;
     }
 
-    public void setLastRunId(String lastRunId) {
+    public void setLastBuildId(String lastRunId) {
         this.lastRunId = lastRunId;
     }
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.frost_fox.jenkins.job_addon.AddonContext;
 import com.frost_fox.jenkins.job_addon.addon.Addon;
+import com.frost_fox.jenkins.job_addon.description.BuildInfo;
 
 import java.util.Objects;
 
@@ -12,12 +13,14 @@ public class AddonExecution {
     private AddonExecutionUrl url;
     private AddonExecutionManager executionManager;
     private AddonContext context;
+    private BuildInfo lastBuildInfo;
 
     public AddonExecution(AddonContext context, AddonExecutionUrl url, AddonExecutionManager executionManager,
-                          long estimation) {
+                          long estimation, BuildInfo buildInfo) {
         this.context = context;
         this.url = url;
         this.executionManager = executionManager;
+        this.lastBuildInfo = buildInfo;
         addon = new Addon(context, estimation);
     }
 
@@ -25,8 +28,8 @@ public class AddonExecution {
         return addon;
     }
 
-    public String getLastExecutionId() {
-        return this.context.getLastRunId();
+    public BuildInfo getLastBuildInfo() {
+        return lastBuildInfo;
     }
 
     @JsonIgnore
@@ -44,13 +47,10 @@ public class AddonExecution {
         return getAddon().getId();
     }
 
-    @SuppressWarnings("WeakerAccess")
-    public void setLastExecutionId(String id) {
-        this.context.setLastRunId(id);
-    }
-
-    public void start() throws AddonExecutionException {
-        this.setLastExecutionId(this.executionManager.startAndGetId(getId()));
+    public String start() throws AddonExecutionException {
+        String lastBuildId = this.executionManager.startAndGetId(getId());
+        this.context.setLastBuildId(lastBuildId);
+        return lastBuildId;
     }
 
     @Override

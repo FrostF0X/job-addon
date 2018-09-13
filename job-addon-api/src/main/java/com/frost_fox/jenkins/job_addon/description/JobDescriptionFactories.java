@@ -10,6 +10,7 @@ public class JobDescriptionFactories {
 
     private JenkinsJobRepository repository = new XStreamJenkinsJobRepository();
     private AddonExecutionManager manager = null;
+    private BuildInfoRepository infoRepository = null;
 
     public static JobDescriptionFactories get() {
         return new JobDescriptionFactories();
@@ -25,6 +26,15 @@ public class JobDescriptionFactories {
         return this;
     }
 
+    public JobDescriptionFactories withInfoRepository(BuildInfoRepository repository) {
+        infoRepository = repository;
+        return this;
+    }
+
+    public JobDescriptionFactory one() {
+        return new JobDescriptionFactory(new AddonExecutionFactory(createManager(), repository, createRepository()));
+    }
+
     private AddonExecutionManager createManager() {
         if (manager == null) {
             return new JenkinsAddonExecutionManager(repository);
@@ -32,8 +42,11 @@ public class JobDescriptionFactories {
         return manager;
     }
 
-    public JobDescriptionFactory one() {
-        return new JobDescriptionFactory(new AddonExecutionFactory(createManager(), repository));
+    private BuildInfoRepository createRepository() {
+        if (infoRepository == null) {
+            return new XStreamBuildInfoRepository(new XStreamJenkinsJobRepository());
+        }
+        return infoRepository;
     }
 
 }

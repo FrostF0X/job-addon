@@ -8,7 +8,8 @@ public class FakeJobDescriptionFactories {
     public static JobDescriptionFactories get() {
         JobDescriptionFactories factories = new JobDescriptionFactories();
         factories.withManager(new FakeAddonExecutionManager())
-                .withRepository(new FakeJenkinsJobRepository());
+                .withRepository(new FakeJenkinsJobRepository())
+                .withInfoRepository(new FakeBuildInfoRepository());
         return factories;
     }
 

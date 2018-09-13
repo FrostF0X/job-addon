@@ -21,9 +21,9 @@ public class AddonExecuteUseCase {
     public Result<String> execute(String buildId, String jobId, JenkinsJob job) {
         try {
             AddonExecution execution = descriptionFactory.create(job).getAddonByBuildIdAndJobId(buildId, jobId);
-            execution.start();
+            String lastBuildId = execution.start();
             repository.save(execution);
-            return Result.successfulWith(execution.getLastExecutionId());
+            return Result.successfulWith(lastBuildId);
         } catch (NoSuchEntity | AddonRepositoryException | AddonExecutionException e) {
             return Result.failedWith(e.getMessage());
         } catch (Exception e) {
