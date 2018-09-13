@@ -12,12 +12,20 @@ export default class StaticJobDescriptionLoader {
                         "id": "deploy-stage",
                         "estimation": 2113
                     },
+                    "lastBuildInfo": {
+                        "duration": 27,
+                        "status": "success"
+                    },
                     "url": "http://localhost:3000/test"
                 }, {
                     "addon": {
                         "name": "Deploy staging",
                         "id": "deploy-prod",
                         "estimation": 2113
+                    },
+                    "lastBuildInfo": {
+                        "duration": 27,
+                        "status": "fail"
                     },
                     "url": "http://localhost:3000/test"
                 }], "id": "4"
@@ -28,40 +36,23 @@ export default class StaticJobDescriptionLoader {
                         "id": "deploy-stage",
                         "estimation": 2113
                     },
+                    "lastBuildInfo": {
+                        "duration": 27,
+                        "status": "success"
+                    },
                     "url": "http://localhost:3000/test"
                 }, {
                     "addon": {
                         "name": "Deploy staging",
                         "id": "deploy-prod",
                         "estimation": 2113
+                    },
+                    "lastBuildInfo": {
+                        "duration": 27,
+                        "status": "fail"
                     },
                     "url": "http://localhost:3000/test"
                 }], "id": "3"
-            }, {
-                "addonExecutions": [{
-                    "addon": {
-                        "name": "Deploy staging",
-                        "id": "deploy-stage",
-                        "estimation": 2113
-                    },
-                    "url": "http://localhost:3000/test"
-                }, {
-                    "addon": {
-                        "name": "Deploy staging",
-                        "id": "deploy-prod",
-                        "estimation": 2113
-                    },
-                    "url": "http://localhost:3000/test"
-                }], "id": "2"
-            }, {
-                "addonExecutions": [{
-                    "addon": {
-                        "name": "Old stage",
-                        "id": "old-deploy-stage",
-                        "estimation": 2113
-                    },
-                    "url": "http://localhost:3000/test"
-                }], "id": "1"
             }]
         },
         "cause": ""

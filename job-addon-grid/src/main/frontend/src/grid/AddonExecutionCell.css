@@ -1,7 +1,14 @@
 .job-grid-addon-execution-cell-background {
-    background: rgba(0, 255, 0, 0.1);
     padding: 1px;
     position: relative;
+}
+
+.job-grid-addon-execution-cell-success {
+    background: rgba(0, 255, 0, 0.1);
+}
+
+.job-grid-addon-execution-cell-fail {
+    background: rgba(255, 50, 0, 0.1);
 }
 
 .job-grid-addon-execution-cell {

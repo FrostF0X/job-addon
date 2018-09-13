@@ -1,13 +1,16 @@
 import Addon from "./Addon";
+import ExecutionInfo from "./ExecutionInfo";
 
 export default class AddonExecution {
 
     /**
      * @param {Addon} addon
+     * @param {ExecutionInfo} executionInfo
      * @param {string} url
      */
-    constructor(addon, url) {
+    constructor(addon, executionInfo, url) {
         this.addon = addon;
+        this.executionInfo = executionInfo;
         this.url = url;
     }
 
@@ -16,7 +19,7 @@ export default class AddonExecution {
      * @returns {AddonExecution}
      */
     static fromObject(object) {
-        return new this(new Addon(object.addon), object.url);
+        return new this(new Addon(object.addon), ExecutionInfo.fromObject(object.lastBuildInfo), object.url);
     }
 
     /**
@@ -26,16 +29,32 @@ export default class AddonExecution {
         return this.addon;
     }
 
+    /**
+     * @returns {string}
+     */
     getName() {
         return this.addon.getName();
     }
 
+    /**
+     * @returns {string}
+     */
     getId() {
         return this.addon.getId();
     }
 
+    /**
+     * @returns {string}
+     */
     getUrl() {
         return this.url;
+    }
+
+    /**
+     * @returns {ExecutionInfo}
+     */
+    getExecutionInfo() {
+        return this.executionInfo;
     }
 
     /**
