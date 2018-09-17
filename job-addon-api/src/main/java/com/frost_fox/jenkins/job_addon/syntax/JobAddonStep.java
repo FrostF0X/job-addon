@@ -2,7 +2,6 @@ package com.frost_fox.jenkins.job_addon.syntax;
 
 import com.frost_fox.jenkins.job_addon.AddonContext;
 import hudson.Extension;
-import hudson.model.Job;
 import hudson.model.Run;
 import org.jenkinsci.Symbol;
 import org.jenkinsci.plugins.workflow.steps.Step;
@@ -13,6 +12,7 @@ import org.kohsuke.stapler.DataBoundConstructor;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -22,13 +22,9 @@ public class JobAddonStep extends Step implements Serializable {
     private final transient AddonContext targetJobContext;
 
     @DataBoundConstructor
-    public JobAddonStep(String name, String id) {
-        Parameters parameters = new Parameters(name, id);
-        targetJobContext = new AddonContext(parameters.getJob().getName(), parameters.getName());
-    }
-
-    private String createExecuteUrl(Job job) {
-        return job.getUrl();
+    public JobAddonStep(String name, String id, Map<String, String> executionParams) {
+        Parameters parameters = new Parameters(name, id, executionParams);
+        targetJobContext = new AddonContext(parameters.getJob().getName(), parameters.getName(), parameters.getExecutionParameters());
     }
 
     @Override

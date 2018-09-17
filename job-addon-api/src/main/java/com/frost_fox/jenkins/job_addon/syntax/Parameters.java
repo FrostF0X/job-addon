@@ -4,16 +4,24 @@ import hudson.model.Item;
 import hudson.model.Job;
 import jenkins.model.Jenkins;
 
+import java.util.AbstractMap;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 public class Parameters {
 
     private final String name;
     private final Job job;
+    private Map<String, String> executionParameters;
 
-    public Parameters(String name, String jobId) {
+    public Parameters(String name, String jobId, Map<String, String> executionParameters) {
         checkParameter(name, "name");
         checkParameter(jobId, "jobId");
         this.name = name;
         this.job = getJob(jobId);
+        this.executionParameters = getExecutionParameters(executionParameters);
     }
 
     private Job getJob(String jobId) {
@@ -28,6 +36,19 @@ public class Parameters {
         return (Job) item;
     }
 
+    public Map<String, String> getExecutionParameters() {
+        return executionParameters;
+    }
+
+    private Map<String, String> getExecutionParameters(Map<String, String> executionParameters) {
+        Map<String, String> parameters =
+                new HashMap<>(Optional.ofNullable(executionParameters).orElse(new HashMap<>()));
+        return parameters.entrySet().stream()
+                .filter(item -> item.getKey() != null && !item.getKey().isEmpty())
+                .map(this::withNormalizedValues)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+    }
+
     private void checkParameter(String parameter, String name) {
         if (parameter == null || parameter.isEmpty()) {
             throw new IllegalArgumentException("must specify " + name);
@@ -40,5 +61,9 @@ public class Parameters {
 
     public Job getJob() {
         return job;
+    }
+
+    private AbstractMap.SimpleEntry<String, String> withNormalizedValues(Map.Entry<String, String> e) {
+        return new AbstractMap.SimpleEntry<>(e.getKey(), Optional.ofNullable(e.getValue()).orElse(""));
     }
 }
