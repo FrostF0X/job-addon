@@ -21,15 +21,22 @@ public class XStreamBuildInfoRepository implements BuildInfoRepository {
                 throw new NoSuchBuild();
             }
             return new BuildInfo(BuildStatus.from(isSuccess(run), run.isBuilding()),
-                    run.getDuration());
+                    determineDuration(run));
         } catch (NoSuchJob e) {
             throw new NoSuchBuild();
         }
     }
 
+    private long determineDuration(WorkflowRun run) {
+        if (run.getDuration() == 0) {
+            return System.currentTimeMillis() - run.getStartTimeInMillis();
+        }
+        return run.getDuration();
+    }
+
     private boolean isSuccess(WorkflowRun run) {
         Result result = run.getResult();
-        if (result == null){
+        if (result == null) {
             return false;
         }
         return result.toString().equals("SUCCESS");
