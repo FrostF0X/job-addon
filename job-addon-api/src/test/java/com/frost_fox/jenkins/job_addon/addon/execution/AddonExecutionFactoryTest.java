@@ -41,7 +41,10 @@ public class AddonExecutionFactoryTest {
 
         AddonExecution execution = factory.create(job, build, context);
 
-        assertThat(execution.getUrl()).isEqualTo(new AddonExecutionUrl(Jobs.URL, Builds.ID, AddonContexts.ID));
+        AddonExecutionUrl url = AddonExecutionUrls.get().withJobUrl(Jobs.URL).withBuildId(Builds.ID)
+                .withAddonId(AddonContexts.ID).one();
+
+        assertThat(execution.getUrl()).isEqualTo(url);
     }
 
     @Test
@@ -50,7 +53,7 @@ public class AddonExecutionFactoryTest {
 
         execution.start();
 
-        verify(executionManager, times(1)).startAndGetId(any());
+        verify(executionManager, times(1)).startAndGetId(any(), any());
     }
 
     @Test

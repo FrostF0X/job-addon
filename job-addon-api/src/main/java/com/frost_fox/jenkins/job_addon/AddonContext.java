@@ -1,19 +1,20 @@
 package com.frost_fox.jenkins.job_addon;
 
-import java.util.Map;
+import com.frost_fox.jenkins.job_addon.addon.execution.ExecutionParameters;
+
 import java.util.Objects;
 
 public class AddonContext {
     private final String name;
     private final String id;
-    private final Map<String, String> executionParameters;
+    private final ExecutionParameters executionParameters;
     private String lastRunId;
 
-    public AddonContext(String id, String name, Map<String, String> executionParameters) {
+    public AddonContext(String id, String name, ExecutionParameters executionParameters) {
         this(id, name, executionParameters, "");
     }
 
-    public AddonContext(String id, String name, Map<String, String> executionParameters, String lastRunId) {
+    public AddonContext(String id, String name, ExecutionParameters executionParameters, String lastRunId) {
         this.name = name;
         this.id = id;
         this.executionParameters = executionParameters;
@@ -32,7 +33,7 @@ public class AddonContext {
         return lastRunId;
     }
 
-    public Map<String, String> getExecutionParameters() {
+    public ExecutionParameters getExecutionParameters() {
         return executionParameters;
     }
 

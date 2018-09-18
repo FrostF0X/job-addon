@@ -37,7 +37,7 @@ public class AddonExecuteUseCaseTest {
     public void returnsJobIdIfSuchJobExistsIn() throws AddonExecutionException {
         JenkinsJob job = Jobs.common();
 
-        doReturn("id").when(executionManager).startAndGetId(any());
+        doReturn("id").when(executionManager).startAndGetId(any(), any());
 
         Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
@@ -77,7 +77,7 @@ public class AddonExecuteUseCaseTest {
     public void returnsExecutionErrorMessageIfAddonCannotBeExecuted() throws AddonExecutionException {
         JenkinsJob job = Jobs.common();
 
-        doThrow(new AddonExecutionException(EXCEPTION_MESSAGE)).when(executionManager).startAndGetId(any());
+        doThrow(new AddonExecutionException(EXCEPTION_MESSAGE)).when(executionManager).startAndGetId(any(), any());
 
         Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 
@@ -88,7 +88,7 @@ public class AddonExecuteUseCaseTest {
     public void returnsGenericErrorMessageIfSomethingWentWrong() throws AddonExecutionException {
         JenkinsJob job = Jobs.common();
 
-        doThrow(new RuntimeException()).when(executionManager).startAndGetId(any());
+        doThrow(new RuntimeException()).when(executionManager).startAndGetId(any(), any());
 
         Result<String> result = useCase.execute(BUILD_ID, ADDON_ID, job);
 

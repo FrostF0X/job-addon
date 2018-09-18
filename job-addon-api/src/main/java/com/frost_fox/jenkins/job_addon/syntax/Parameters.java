@@ -1,5 +1,6 @@
 package com.frost_fox.jenkins.job_addon.syntax;
 
+import com.frost_fox.jenkins.job_addon.addon.execution.ExecutionParameters;
 import hudson.model.Item;
 import hudson.model.Job;
 import jenkins.model.Jenkins;
@@ -14,14 +15,14 @@ public class Parameters {
 
     private final String name;
     private final Job job;
-    private Map<String, String> executionParameters;
+    private ExecutionParameters executionParameters;
 
     public Parameters(String name, String jobId, Map<String, String> executionParameters) {
         checkParameter(name, "name");
         checkParameter(jobId, "jobId");
         this.name = name;
         this.job = getJob(jobId);
-        this.executionParameters = getExecutionParameters(executionParameters);
+        this.executionParameters = validateAndGetExecutionParameters(executionParameters);
     }
 
     private Job getJob(String jobId) {
@@ -36,17 +37,17 @@ public class Parameters {
         return (Job) item;
     }
 
-    public Map<String, String> getExecutionParameters() {
+    public ExecutionParameters getExecutionParameters() {
         return executionParameters;
     }
 
-    private Map<String, String> getExecutionParameters(Map<String, String> executionParameters) {
+    private ExecutionParameters validateAndGetExecutionParameters(Map<String, String> executionParameters) {
         Map<String, String> parameters =
                 new HashMap<>(Optional.ofNullable(executionParameters).orElse(new HashMap<>()));
-        return parameters.entrySet().stream()
+        return new ExecutionParameters(parameters.entrySet().stream()
                 .filter(item -> item.getKey() != null && !item.getKey().isEmpty())
                 .map(this::withNormalizedValues)
-                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)));
     }
 
     private void checkParameter(String parameter, String name) {

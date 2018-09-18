@@ -2,11 +2,11 @@ package com.frost_fox.jenkins.job_addon.addon;
 
 import com.frost_fox.jenkins.job_addon.AddonContext;
 import com.frost_fox.jenkins.job_addon.Ids;
+import com.frost_fox.jenkins.job_addon.addon.execution.ExecutionParameters;
+import com.frost_fox.jenkins.job_addon.addon.execution.TestExecutionParameters;
 
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 public class AddonContexts {
@@ -18,12 +18,12 @@ public class AddonContexts {
     @SuppressWarnings("WeakerAccess")
     public static final String LAST_RUN_ID = Ids.ID;
     @SuppressWarnings("WeakerAccess")
-    public static final Map<String, String> EXECUTION_PARAMETERS = new HashMap<>();
+    public static final ExecutionParameters EXECUTION_PARAMETERS = TestExecutionParameters.get();
 
     private List<String> ids = IDS;
     private String name = NAME;
     private String lastRunId = LAST_RUN_ID;
-    private Map<String, String> executionParameters = EXECUTION_PARAMETERS;
+    private ExecutionParameters executionParameters = EXECUTION_PARAMETERS;
 
     public static AddonContexts get() {
         return new AddonContexts();

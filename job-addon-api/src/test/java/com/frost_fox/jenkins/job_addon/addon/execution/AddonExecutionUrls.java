@@ -1,13 +1,13 @@
 package com.frost_fox.jenkins.job_addon.addon.execution;
 
 public class AddonExecutionUrls {
-    public final String URL = "http://test.com/job/";
-    public final String BUILD_ID = "build_id";
-    public final String ADDON_ID = "addon_id";
+    private final String URL = "http://test.com/job/";
+    private final String BUILD_ID = "build_id";
+    private final String ADDON_ID = "addon_id";
 
-    private String jobUrl;
-    private String buildId;
-    private String addonId;
+    private String jobUrl = URL;
+    private String buildId = BUILD_ID;
+    private String addonId = ADDON_ID;
 
     public static AddonExecutionUrls get() {
         return new AddonExecutionUrls();

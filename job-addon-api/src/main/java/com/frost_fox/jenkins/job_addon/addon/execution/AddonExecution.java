@@ -48,7 +48,7 @@ public class AddonExecution {
     }
 
     public String start() throws AddonExecutionException {
-        String lastBuildId = this.executionManager.startAndGetId(getId());
+        String lastBuildId = this.executionManager.startAndGetId(getId(), context.getExecutionParameters());
         this.context.setLastBuildId(lastBuildId);
         return lastBuildId;
     }
