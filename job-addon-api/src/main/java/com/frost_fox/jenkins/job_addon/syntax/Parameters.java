@@ -6,7 +6,7 @@ import hudson.model.Job;
 import jenkins.model.Jenkins;
 
 import java.util.AbstractMap;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,7 +17,7 @@ public class Parameters {
     private final Job job;
     private ExecutionParameters executionParameters;
 
-    public Parameters(String name, String jobId, Map<String, String> executionParameters) {
+    public Parameters(String name, String jobId, Map<String, Object> executionParameters) {
         checkParameter(name, "name");
         checkParameter(jobId, "jobId");
         this.name = name;
@@ -41,9 +41,8 @@ public class Parameters {
         return executionParameters;
     }
 
-    private ExecutionParameters validateAndGetExecutionParameters(Map<String, String> executionParameters) {
-        Map<String, String> parameters =
-                new HashMap<>(Optional.ofNullable(executionParameters).orElse(new HashMap<>()));
+    private ExecutionParameters validateAndGetExecutionParameters(Map<String, Object> executionParameters) {
+        Map<String, Object> parameters = Optional.ofNullable(executionParameters).orElse(Collections.emptyMap());
         return new ExecutionParameters(parameters.entrySet().stream()
                 .filter(item -> item.getKey() != null && !item.getKey().isEmpty())
                 .map(this::withNormalizedValues)
@@ -64,7 +63,7 @@ public class Parameters {
         return job;
     }
 
-    private AbstractMap.SimpleEntry<String, String> withNormalizedValues(Map.Entry<String, String> e) {
-        return new AbstractMap.SimpleEntry<>(e.getKey(), Optional.ofNullable(e.getValue()).orElse(""));
+    private AbstractMap.SimpleEntry<String, String> withNormalizedValues(Map.Entry<String, Object> e) {
+        return new AbstractMap.SimpleEntry<>(e.getKey(), String.valueOf(e.getValue()));
     }
 }
